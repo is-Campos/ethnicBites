@@ -1,0 +1,3 @@
+# Ignorar archivos generados localmente
+__pycache__/
+*.pyc
