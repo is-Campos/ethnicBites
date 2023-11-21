@@ -1,0 +1,70 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+header h1 {
+  color: green;
+}
+
+header nav button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header nav button:first-child {
+  background-color: #f44336;
+}
+
+aside nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+aside nav ul li {
+  background-color: #800000;
+  color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+main .hero {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+main .hero h2 {
+  color: #333;
+}
+
+main .cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+main .cards article {
+  background-color: #800000;
+  color: white;
+  padding: 15px;
+  width: 30%;
+}
+
+main .cards article h3 {
+  color: #fff;
+}
+
+main .cards article p {
+  color: #f0f0f0;
+}
