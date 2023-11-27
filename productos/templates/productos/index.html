@@ -1,50 +1,136 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
+    <title>Productos</title>
 <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+<link rel="stylesheet" href="{% static 'css/index_productos.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
-<body>
-    <header>
-        <h1>ETHNIC BITES</h1>
-        <nav>
-            <button>Iniciar Sesión</button>
-            <button>Regístrate</button>
-        </nav>
-    </header>
-    <aside>
-        <nav>
-            <ul>
-                <li>Inicio</li>
-                <li>Alimentos</li>
-                <li>Kits de comida</li>
-                <li>Ingredientes</li>
-                <li>Carrito</li>
-                <li>Direcciones</li>
-            </ul>
-        </nav>
-    </aside>
+<body class="ethnic">
     <main>
-        <section class="hero">
-            <h2>Experimenta la gran diversidad</h2>
-            <div class="cards">
-                <article>
-                    <h3>Atrévete a probar nuevas cosas</h3>
-                    <p>Ordena lo que gustes entre los diferentes tipos de comida.</p>
-                </article>
-                <article>
-                    <h3>Prepara tu propia comida</h3>
-                    <p>Si te gusta hacer tu propia comida, ordena tu kit personalizado.</p>
-                </article>
-                <article>
-                    <h3>Prueba nuevos ingredientes</h3>
-                    <p>Experimenta y usa nuevos ingredientes de diferentes lugares.</p>
-                </article>
-            </div>
+       
+        <section class="box">
+                <div class="one">
+                    Menú
+                    <div class="list-group menu-products">
+                        <button type="button" class="list-group-item list-group-item-action active product-category-button-active" aria-current="true">
+                          Inicio
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button">Alimentos</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button">Kits de comida</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button">Ingredientes</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button">Carrito</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button">Direcciones</button>
+                      </div>
+                </div>
+                <div class="two">
+
+                    <div class="row height d-flex justify-content-center align-items-center">
+                        <div class="col-md-6">
+                          <div class="form">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control form-input" placeholder="Busca en Ethnic Bites...">
+                          </div>
+                        </div>
+                    </div>
+                    Filtrar
+                    <br> <br>
+
+                    <div class="filter-buttons-group">
+                    <button class="btn btn-primary btn-filter" type="submit">
+                        <img class="btn-image" src="https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-pizza-dibujada-mano_23-2150622716.jpg">
+                    </button>
+
+                    <button class="btn btn-primary btn-filter" type="submit">
+                        <img class="btn-image" src="https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-pizza-dibujada-mano_23-2150622716.jpg">
+                    </button>
+
+                    <button class="btn btn-primary btn-filter" type="submit">
+                        <img class="btn-image" src="https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-pizza-dibujada-mano_23-2150622716.jpg">
+                    </button>
+
+                    <button class="btn btn-primary btn-filter" type="submit">
+                        <img class="btn-image" src="https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-pizza-dibujada-mano_23-2150622716.jpg">
+                    </button>
+                    </div>
+
+                    <br> <br>
+                    Platos recomendados
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                        <div class="col">
+                          <div class="card h-100 card-products">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"
+                              alt="Hollywood Sign on The Hill" />
+                            <div class="card-body">
+                              <h5 class="card-title">California Roll</h5>
+                              <p class="card-text">
+                              </p>
+                            </div>
+                            <div class="card-footer">
+                                <small>Sushi House</small>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="col">
+                          <div class="card h-100 card-products">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" class="card-img-top"
+                              alt="Palm Springs Road" />
+                            <div class="card-body">
+                              <h5 class="card-title">Hamburguesa con queso</h5>
+                              <p class="card-text"></p>
+                            </div>
+                            <div class="card-footer">
+                                <small>El Asadero</small>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="col">
+                          <div class="card h-100 card-products">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" class="card-img-top"
+                              alt="Los Angeles Skyscrapers" />
+                            <div class="card-body card-body-products">
+                              <h5 class="card-title">Kebab de pollo</h5>
+                              <p class="card-text"></p>
+                            </div>
+                            <div class="card-footer">
+                                <small>Parrilla Tome</small>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card h-100 card-products">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
+                              alt="Skyscrapers" />
+                            <div class="card-body card-body-products">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">
+                                This is a longer card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.
+                              </p>
+                            </div>
+                            <div class="card-footer">
+                                <small>Last updated 3 mins ago</small>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                </div>
+               
+      
         </section>
+    
     </main>
 </body>
 </html>
+{% endblock %}
