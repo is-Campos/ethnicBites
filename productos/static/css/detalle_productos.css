@@ -1,0 +1,45 @@
+.box {
+  display: flex;
+  color: black;
+  display: flex;
+  width: -webkit-fill-available;
+  margin: 4vw;
+  }
+    
+  .bg-container {
+    flex: 1;
+    padding: 2em;
+    background-color: #c72546;
+    margin: 4em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    display: flex;
+    width: inherit;
+  }
+
+  .card-container {
+    flex: 1;
+    padding: 1em;
+    margin-right: 1em;
+    background-color: white;
+    margin-left: 1em;
+    display: flex;
+    width: 100%;
+  }
+
+  .details-container {
+    flex: 1;
+    padding: 1em;
+    margin: 1em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    width: -webkit-fill-available;
+  }
+  
+  .ethnic{
+    background-color: #d5ca98;
+    height: 100%;
+  }

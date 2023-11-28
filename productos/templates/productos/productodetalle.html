@@ -1,5 +1,44 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1>{{producto.nombre}}</h1>
-<img src="{{producto.imagen}}" alt="Imagen del producto "{{producto.nombre}}>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/detalle_productos.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="ethnic">
+    <main>   
+        <section class="box">
+                <div class="bg-container">
+                    <div class="card-container">
+                        <div class="details-container">
+                            <div>
+                                <!--<h1>{{producto.nombre}}</h1>-->
+                        <!--<img src="{{producto.imagen}}" alt="Imagen del producto "{{producto.nombre}}>-->
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/abc3022e2119d024141b045765b45cb6/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg" style="width:30vw;" alt="Imagen del producto "{{producto.nombre}}>
+                        <p>
+                            <h4>Hamburguesa con queso</h4>    
+                            <h5>El Asadero - Precio: $120</h5>     
+                        </p>        
+                                
+                            </div>
+                            <div style="
+                            margin-left: 4em;
+                        ">
+                                <p>Hamburguesa con queso de alta calidad derretido sobre carne jugosa, queso americano, lechiga, tomate, servida con pan con ajonjoli, ofreciendo una experiencia culinaria refinada y sabrosa. Perfecta para quienes buscan una hamburguesa excepcional.</p>
+                        <!--<img src="{{producto.imagen}}" alt="Imagen del producto "{{producto.nombre}}>-->
+                        <img src="{% static 'imgs/burguer.jpeg' %}" width="10vw" alt="Imagen del producto "{{producto.nombre}}>                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+</body>
+        
 {% endblock %}
