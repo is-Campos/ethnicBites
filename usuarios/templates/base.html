@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EthnicBites</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg  navbar-light navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand text-light" href="#">ETHNIC BITES</a>
+        <div class="d-grid gap-2 d-md-block">
+          {% if not user.is_authenticated %}
+          <a href="/usuarios/iniciarsesion">
+            <button class="btn btn-custom" type="button">Iniciar Sesión</button>
+          </a>
+          <a href="/usuarios/registro">
+            <button class="btn btn-custom" type="button">Regístrate</button>
+          </a>
+          {% else %}
+          <a href="/usuarios/logout">
+            <button class="btn btn-custom" type="button">Cerrar Sesión</button>
+          </a>
+          {% endif %}
+        </div>
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

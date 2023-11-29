@@ -1,0 +1,15 @@
+# Archivos generados localmente
+__pycache__/
+*.pyc
+
+# Configuración local o secretos
+.env
+*.pyc
+
+# Archivos de base de datos específicos de MySQL
+db.sqlite3
+*.sql
+*.frm
+*.MYD
+*.MYI
+*.ibd

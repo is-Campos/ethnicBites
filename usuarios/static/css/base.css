@@ -1,0 +1,22 @@
+.btn-custom {
+  margin: 0px 2px;
+  border-radius: 20px !important;
+  /* Ajusta el valor según lo redondeado que desees que sea el botón */
+  background-color: #9DAB72 !important;
+  /* Cambia el color de fondo según tus preferencias */
+  color: #ffffff !important;
+}
+
+.btn-custom:hover {
+  background-color: #227046 !important;
+  /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
+
+.navbar-custom {
+  background-color: #799159 !important;
+  color: #ffffff !important;
+}
+
+a:link, a:visited, a:active{
+  text-decoration: none;
+}

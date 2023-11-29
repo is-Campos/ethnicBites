@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_ROOT = ''
+MEDIA_URL = ''
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,7 +46,8 @@ INSTALLED_APPS = [
     'pedidos',
     'pagos',
     'categorias',
-    'carrito'
+    'carrito',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -81,8 +86,12 @@ WSGI_APPLICATION = 'ethnicBites.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ethnicbites',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -123,10 +132,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'productos/static'),
+    os.path.join(BASE_DIR, 'usuarios/static'),
+    # Puedes agregar más rutas según sea necesario
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'usuarios.CustomUser'
-
