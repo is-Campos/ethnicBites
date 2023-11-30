@@ -27,19 +27,45 @@
     width: 100%;
   }
 
-  .details-container {
-    flex: 1;
-    padding: 1em;
-    margin: 1em;
-    margin-top: 0em;
-    margin-bottom: 0em;
-    background-color: white;
-    display: flex;
-    justify-content: space-around;
-    width: -webkit-fill-available;
-  }
-  
-  .ethnic{
-    background-color: #d5ca98;
-    height: 100%;
-  }
+.details-container {
+  flex: 1;
+  padding: 1em;
+  margin: 1em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  width: -webkit-fill-available;
+  position: relative;
+}
+
+.description-container{
+  margin-left: 4em;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.ethnic-btn{
+  background: #9DAB72;
+  border-color: #9DAB72;
+  bottom: -10px;
+  position: absolute;
+}
+
+.ethnic{
+  background-color: #d5ca98;
+  height: 100%;
+}
+
+.image-container{
+  width: 30vw;
+  max-height: 40vh;
+  display: flex;
+}
+.product-image{
+  width: -webkit-fill-available;
+}
