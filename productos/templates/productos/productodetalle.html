@@ -21,7 +21,7 @@ https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
         <section class="box">
                 <div class="bg-container">
                     <div class="card-container">
-                        <div class="details-container">
+                        <div class="details-container" id="product-id" value="{{producto.id}}">
                             <div>
                                 <div class="image-container">
                                     <img src="{{producto.imagen}}" class="product-image" alt="Imagen del producto "{{producto.nombre}}>
@@ -35,11 +35,9 @@ https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
                             </div>
                             <div class="description-container">
                                 <p>{{producto.descripcion}}</p> 
-                                <div class="button-container">
-                                  
-                                <button class="btn btn-primary ethnic-btn" onclick="add_to_cart()">Agregar 1 al carrito</button> 
-                                                           
-                            </div>                 
+                                <div class="button-container">                         
+                                    <button class="btn btn-primary ethnic-btn" onclick="add_to_cart()">Agregar 1 al carrito</button>                  
+                                </div>                 
                             </div>
                         </div>
                     </div>

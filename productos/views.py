@@ -1,5 +1,5 @@
 from http.client import HTTPResponse
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.views import generic
 from .forms import CrearProductoForm
@@ -18,14 +18,21 @@ def alimentos(request):
 
 @csrf_exempt
 def add_cart(request):
-    producto = Producto.objects.get(pk=1)
+    pk = request.POST['product']
+    producto = Producto.objects.get(id=pk)
     try:
         carrito = Carrito.objects.get(idCliente=request.user)
-        return render(request, 'productos/productodetalle.html', {'producto':producto})
     except Carrito.DoesNotExist:
         nuevoCarrito = Carrito.objects.create(idCliente=request.user)
         nuevoCarrito.save()
-        return render(request, 'productos/index.html')
+        carrito = nuevoCarrito
+    try:
+        cart_product = CarritoDetalle.objects.filter(idCarrito=carrito, idProducto=producto).first()
+        cart_product.cantidad+=1
+    except:
+        cart_product = CarritoDetalle.objects.create(idCarrito=carrito, idProducto=producto, cantidad=1)    
+    cart_product.save()
+    return HttpResponse(status=200)
 
 def crear(request):
     if request.POST:
