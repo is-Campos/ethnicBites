@@ -1,4 +1,3 @@
-from http.client import HTTPResponse
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.views import generic

@@ -7,57 +7,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
-<link rel="stylesheet" href="{% static 'css/index_carrito.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Carrito</title>
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index_carrito.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 
-
+    <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="{% static 'css/index_carrito.css' %}">
+    <script src="{% static 'js/index_carrito.js' %}"></script>
 </head>
 <body class="ethnic">
     <main> 
         <section class="box">
                 <div class="one">
                       <div class="card-container">
-                        <div class="details-container">
+                        <div class="details-container" id="details-container">
                             <h1>Carrito</h1>
                             {% if cart_products %}
+                            <div id="cart">
                             <div class="cart-products">
                                 {% for p in cart_products %}
-                                <div class="product-details-container">
+                                <div class="product-details-container" id="{{p.idProducto.id}}">
                                     <div class="image-container">
                                         <img class="product-image" src="{{p.idProducto.imagen}}"/>
                                     </div>
                                     <div class="product-description">
                                         <p class="product-description-text">{{p.idProducto.nombre}}</p>
-                                        <p class="product-description-text">Precio: ${{p.idProducto.precio}}</p>
-                                        <p class="product-description-text">Cantidad: {{p.cantidad}}</p>
+                                        <p class="product-description-text">Precio: $<span class="precio">{{p.idProducto.precio|floatformat:2}}</span></p>
+                                        <p class="product-description-text">Cantidad: <span class="cantidad">{{p.cantidad}}</span></p>
                                     </div>
                                     <div class="product-buttons">
-                                        <button>Eliminar</button>
-                                        <button>CLICK</button>
+                                        <button class="btn btn-primary ethnic-btn" value="{{p.idProducto.id}}" onclick="delete_from_cart(this)">Eliminar</button>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-danger btn-number ethnic-btn"  data-type="minus" data-field="quantity-btn[{{p.idProducto.id}}]">
+                                                    <span class="glyphicon glyphicon-minus icon-minus"></span>
+                                                </button>
+                                            </span>
+                                            <input type="text" product_id="{{p.idProducto.id}}" name="quantity-btn[{{p.idProducto.id}}]" class="form-control input-number" value="{{p.cantidad}}" min="1" max="{{p.idProducto.stock}}">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-success btn-number ethnic-btn" data-type="plus" data-field="quantity-btn[{{p.idProducto.id}}]">
+                                                    <span class="glyphicon glyphicon-plus icon-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 {% endfor %}
-                                <div class="product-details-container">
-                                    <div class="image-container">
-                                        <img class="product-image" src="https://srv.carbonads.net/static/30242/c40b9e0bbd3d881b8e6465baf2f101d943eb04d3"/>
-                                    </div>
-                                    <div class="product-description">
-                                        <p class="product-description-text">Hamburguesa con queso</p>
-                                        <p class="product-description-text">Precio: $120</p>
-                                        <p class="product-description-text">Cantidad 1</p>
-                                    </div>
-                                    <div class="product-buttons">
-                                        <button>Eliminar</button>
-                                        <button>CLICK</button>
-                                    </div>
-                                </div>
+                            </div>
+                            <p class="total-cart">Total: $<span id="total"></span></p>
+                            <button class="btn btn-primary ethnic-btn" onclick="delete_cart()">Eliminar carrito</button>
                             </div>
                             {% else %}
-                            <p>No hay productos en el carrito</p>
+                            <p id="empty-cart">No hay productos en el carrito</p>
                             {% endif %}
                         </div>
                     </div>
@@ -66,8 +71,7 @@
                     <div class="card-container">
                         <div class="details-container">
                             <h1>Pago</h1>
-                            <p>Selecciona tu método de pago</p>
-                            
+                            <p>Selecciona tu método de pago</p>  
                         </div>
                     </div>
 

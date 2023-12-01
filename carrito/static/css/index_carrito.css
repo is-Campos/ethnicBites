@@ -75,6 +75,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    flex: 0.4;
 }
 
 .cart-products{
@@ -88,8 +89,26 @@
     flex-direction: column;
     justify-content: space-evenly;
     text-align: center;
+    flex: 0.6;
 }
 
 .product-description-text{
     margin-bottom: 0rem;
+}
+
+.total-cart{
+    margin-top: 5%;
+}
+
+.ethnic-btn{
+    background: #9DAB72;
+    border-color: #9DAB72;
+}
+
+.icon-minus:before{
+    content: "\2212";
+}
+
+.icon-plus:before{
+    content: "\2b";
 }
