@@ -1,15 +1,13 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
+from productos import views
 from . import views
 
-app_name = "productos"
+app_name = "carrito"
 
 urlpatterns = [
-  path("", views.alimentos, name="index"),
-  path('crear/', views.crear, name='crear'),
-  path('<int:id>', views.productodetalle),
-  path('add_cart/', views.add_cart)
+    path("", views.cart, name="index")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

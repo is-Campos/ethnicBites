@@ -101,6 +101,10 @@
   font-weight: bold;
 }
 
+.btn-link{
+  color:white;
+}
+
 /*Barra de búsqueda*/
 
 .form{

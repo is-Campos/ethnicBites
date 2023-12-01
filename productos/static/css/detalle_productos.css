@@ -1,7 +1,6 @@
 .box {
   display: flex;
   color: black;
-  display: flex;
   width: -webkit-fill-available;
   margin: 4vw;
   }

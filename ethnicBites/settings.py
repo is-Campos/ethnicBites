@@ -135,6 +135,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'productos/static'),
     os.path.join(BASE_DIR, 'usuarios/static'),
+    os.path.join(BASE_DIR, 'carrito/static'),
     # Puedes agregar más rutas según sea necesario
 ]
 

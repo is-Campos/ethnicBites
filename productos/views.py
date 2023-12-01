@@ -4,25 +4,28 @@ from django.shortcuts import redirect, render
 from django.views import generic
 from .forms import CrearProductoForm
 from .models import Producto
+from carrito.models import CarritoDetalle
+from carrito.models import Carrito
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
 
-def alimentos(request):
-   
+def alimentos(request): 
     all_products = Producto.objects.order_by("stock")
     return render(request,"productos/index.html",{
         'all_products': all_products
     })
-   
-def add_carto(request):
-    if request.POST["add_cart"] == "1":
-        return redirect('/productos')
 
 @csrf_exempt
 def add_cart(request):
-    nuevoproducto = Producto.objects.create(nombre='Carrito', descripcion='Agregado', precio=1, stock=1, idVendedor=request.user, tipo='alimento', imagen='//')
-    nuevoproducto.save()
-    return redirect('/productos')
+    producto = Producto.objects.get(pk=1)
+    try:
+        carrito = Carrito.objects.get(idCliente=request.user)
+        return render(request, 'productos/productodetalle.html', {'producto':producto})
+    except Carrito.DoesNotExist:
+        nuevoCarrito = Carrito.objects.create(idCliente=request.user)
+        nuevoCarrito.save()
+        return render(request, 'productos/index.html')
 
 def crear(request):
     if request.POST:
