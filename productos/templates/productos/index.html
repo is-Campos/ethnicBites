@@ -87,13 +87,15 @@
                                 <img src="{{p.imagen}}" class="card-img-top card-img-product"
                                 alt="{{p.nombre}}" />
                                 </div>
-                                <div class="card-body" type="{{p.tipo}}">
+                                <div class="card-body" categories="{% for category_detail in p.categoriadetalle_set.all %}
+                                {{ category_detail.idCategoria.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}" 
+                                type="{{ p.tipo }}">
                                     <h5 class="card-title">{{p.nombre}}</h5>
                                     <p class="card-text">
                                     </p>
                                 </div>
                                 <div class="card-footer">
-                                    <small>Sushi House</small>
+                                    <small>{{p.idVendedor.username}}</small>
                                 </div>
                             </div>
                         </a>

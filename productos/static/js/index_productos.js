@@ -22,7 +22,7 @@ function filterProductsByCategory(category) {
     cards = cardContainer.getElementsByClassName("card-products");
     for (i = 0; i < cards.length; i++) {
         title = cards[i].querySelector(".card-body");
-        if (title.innerText.toLowerCase().indexOf(category) > -1) {
+        if ($(title).attr('categories').toLowerCase().indexOf(category) > -1) {
             containers[i].style.display = "";
         } else {
             containers[i].style.display = "none";
@@ -67,7 +67,7 @@ $(function(){
     filterProductsByType('alimento');
     $('#italiana').click(function (e) {
         if($(this).attr('aria-pressed') === 'false'){
-            filterProductsByCategory("california")
+            filterProductsByCategory("italiana")
         }else{
             filterProductsByCategory("")
         }
@@ -80,9 +80,9 @@ $(function(){
       
       $('#mexicana').click(function (e) {
         if($(this).attr('aria-pressed') === 'false'){
-            filterProductsByType("kit")
+            filterProductsByCategory("mexicana")
         }else{
-            filterProductsByType("")
+            filterProductsByCategory("")
         }
         $('#francesa').removeClass('active'),
         $('#japonesa').removeClass('active'),
@@ -92,6 +92,11 @@ $(function(){
       });
 
       $('#japonesa').click(function (e) {
+        if($(this).attr('aria-pressed') === 'false'){
+            filterProductsByCategory("japonesa")
+        }else{
+            filterProductsByCategory("")
+        }
         $('#mexicana').removeClass('active'),
         $('#italiana').removeClass('active'),
         $('#francesa').removeClass('active'),
@@ -100,6 +105,11 @@ $(function(){
       });
 
       $('#francesa').click(function (e) {
+        if($(this).attr('aria-pressed') === 'false'){
+            filterProductsByCategory("francesa")
+        }else{
+            filterProductsByCategory("")
+        }
         $('#mexicana').removeClass('active'),
         $('#japonesa').removeClass('active'),
         $('#italiana').removeClass('active'),
@@ -108,6 +118,11 @@ $(function(){
       });
 
       $('#vegana').click(function (e) {
+        if($(this).attr('aria-pressed') === 'false'){
+            filterProductsByCategory("vegana")
+        }else{
+            filterProductsByCategory("")
+        }
         $('#mexicana').removeClass('active'),
         $('#japonesa').removeClass('active'),
         $('#italiana').removeClass('active'),
@@ -116,6 +131,11 @@ $(function(){
       });
 
       $('#kosher').click(function (e) {
+        if($(this).attr('aria-pressed') === 'false'){
+            filterProductsByCategory("kosher")
+        }else{
+            filterProductsByCategory("")
+        }
         $('#mexicana').removeClass('active'),
         $('#japonesa').removeClass('active'),
         $('#italiana').removeClass('active'),
