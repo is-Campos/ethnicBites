@@ -30,6 +30,8 @@ function delete_cart(paid=false){
     success: function() {
         cart = document.getElementById("cart");
         cart.remove();
+        document.getElementById('cart-section-container').classList.add('one-np');
+        document.getElementById('payment-section-container').remove();
         document.getElementById("details-container").innerHTML += "<p id='empty-cart'>No hay productos en el carrito</p>";
         if(!paid){
             alert('Carrito vaciado');
@@ -49,7 +51,6 @@ function update_quantity_cart(p,qty){
     method : 'POST',
     success: function() {
         quantity_container = document.getElementById(p);
-        console.log(quantity_container);
         span_cantidad = quantity_container.getElementsByClassName("cantidad");
         if(span_cantidad.length==1){
             span_cantidad[0].innerText=quantity;

@@ -22,7 +22,11 @@
 <body class="ethnic">
     <main> 
         <section class="box">
-                <div class="one">
+            {% if cart_products %}
+                <div class="one" id="cart-section-container">
+                    {% else %}
+                    <div class="one-np" id="cart-section-container">
+                    {% endif %}
                       <div class="card-container">
                         <div class="details-container" id="details-container">
                             <h1>Carrito</h1>
@@ -67,7 +71,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="two">
+                {% if cart_products %}
+                <div class="two" id="payment-section-container">
                     <div class="card-container">
                         <div class="details-container">
                             <h1>Pago</h1>
@@ -110,8 +115,8 @@
                             <button class="btn btn-primary ethnic-btn" id="btn_pago" value=1 data-url="{% url 'pagos:pagar' %}" onclick="pay(this)">Pagar</button>
                         </div>
                     </div>
-
                 </div>
+                {% endif %}
                 </section>
             </main>
         </body>
