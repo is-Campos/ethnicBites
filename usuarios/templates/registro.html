@@ -1,15 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Registro</h1>
-<form method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <p>
-    {{error}}
-  </p>
-  <button>
-    Registro
-  </button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/registro.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+</head>
+<body>
+  <div class="container">
+    <div class="image-container">
+      <img src="{% static 'imgs/banner2.png' %}">
+    </div>
+    <div class="form-container">
+      <h1>¡Unite y experimenta el sabor!</h1>
+      <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <p>
+          {{error}}
+        </p>
+        <button>
+          Registro
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/direccion.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if direccion_usuario %}Editar tu{% else %}Ingresa tu{% endif %} dirección</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+<div class="container">
+    <div class="address-form">
+        <form method="POST">
+            <h1>{% if direccion_usuario %}Editar tu{% else %}Ingresa tu{% endif %} dirección</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ error }}
+            <button>Guardar</button>
+        </form>
+    </div>
+</div>
+</html>
+{% endblock content %}
