@@ -4,17 +4,23 @@ function go_to_cart(){
 }
 
 function go_to_ingrediente(){
-    var url = $("#btn_ingrediente").attr("data-url");
+    var url_ref = $("#btn_ingrediente").attr("data-url").substring(1)
+    var url = new URL(location.href+url_ref);
+    url.href += '?ingrediente';
     location.href=url;
 }
 
 function go_to_alimento(){
-    var url = $("#btn_alimento").attr("data-url");
+    var url_ref = $("#btn_ingrediente").attr("data-url").substring(1)
+    var url = new URL(location.href+url_ref);
+    url.href += '?alimento';
     location.href=url;
 }
 
 function go_to_kit(){
-    var url = $("#btn_kit").attr("data-url");
+    var url_ref = $("#btn_ingrediente").attr("data-url").substring(1)
+    var url = new URL(location.href+url_ref);
+    url.href += '?kit';
     location.href=url;
 }
 

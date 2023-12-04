@@ -51,8 +51,11 @@ function filterProductsByType(type) {
         case 'ingrediente':
             header_product.innerText = "Ingredientes recomendados";
             break;
-        default:
+        case 'alimento':
             header_product.innerText = "Platos recomendados";
+            break;
+        default:
+            header_product.innerText = "Productos recomendados";
             break;
     }
 }
@@ -64,6 +67,8 @@ function go_to_cart(){
 }
 
 $(function(){
+    filterProductsByType(window.location.search.substring(1));
+
     $('#italiana').click(function (e) {
         if($(this).attr('aria-pressed') === 'false'){
             filterProductsByCategory("italiana")
