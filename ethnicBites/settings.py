@@ -65,7 +65,7 @@ ROOT_URLCONF = 'ethnicBites.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,6 +136,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'productos/static'),
     os.path.join(BASE_DIR, 'usuarios/static'),
     os.path.join(BASE_DIR, 'carrito/static'),
+    os.path.join(BASE_DIR, 'ethnicBites/static'),
     # Puedes agregar más rutas según sea necesario
 ]
 

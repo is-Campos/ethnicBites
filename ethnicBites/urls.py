@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from ethnicBites.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('productos/', include("productos.urls")),
     path('usuarios/', include("usuarios.urls")),
     path('carrito/', include("carrito.urls")),
-    path('pagos/', include("pagos.urls"))
+    path('pagos/', include("pagos.urls")),
+    path('', home, name='home')
 ]

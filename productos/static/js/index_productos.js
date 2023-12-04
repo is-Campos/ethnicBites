@@ -64,7 +64,6 @@ function go_to_cart(){
 }
 
 $(function(){
-    filterProductsByType('alimento');
     $('#italiana').click(function (e) {
         if($(this).attr('aria-pressed') === 'false'){
             filterProductsByCategory("italiana")

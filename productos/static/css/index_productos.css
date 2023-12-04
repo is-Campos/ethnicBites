@@ -2,7 +2,6 @@
   display: flex;
   margin-top: 1em;
   color: white;
-  display: flex;
   margin-bottom: 1em;
   }
   
@@ -36,6 +35,10 @@
 
 .menu-products{
   margin-top: 1em;
+}
+
+.menu-text{
+  font-weight: bolder;
 }
 
 .card-products{

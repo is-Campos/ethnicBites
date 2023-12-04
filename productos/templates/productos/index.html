@@ -18,11 +18,12 @@
     <main> 
         <section class="box">
                 <div class="one">
-                    Menú
+                    <span class="menu-text">Menú</span>
                     <div class="list-group menu-products">
                         <button type="button" class="list-group-item list-group-item-action product-category-button" aria-current="true">
                           Inicio
                         </button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('')">Todos</button>
                         <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('alimento')">Alimentos</button>
                         <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('kit')">Kits de comida</button>
                         <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('ingrediente')">Ingredientes</button>
