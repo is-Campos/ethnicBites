@@ -8,9 +8,13 @@ function searchProducts() {
     for (i = 0; i < cards.length; i++) {
         title = cards[i].querySelector(".card-body");
         if (title.innerText.toLowerCase().indexOf(filter) > -1) {
-            containers[i].style.display = "";
+            if($(containers[i]).attr('filter')=="off"){
+                containers[i].style.display = "";
+            }
         } else {
-            containers[i].style.display = "none";
+            if($(containers[i]).attr('filter')=="off"){
+                containers[i].style.display = "none";
+            }
         }
     }
 }
@@ -23,9 +27,13 @@ function filterProductsByCategory(category) {
     for (i = 0; i < cards.length; i++) {
         title = cards[i].querySelector(".card-body");
         if ($(title).attr('categories').toLowerCase().indexOf(category) > -1) {
-            containers[i].style.display = "";
+            if($(containers[i]).attr('filter')=="off"){
+                containers[i].style.display = "";
+            }
         } else {
-            containers[i].style.display = "none";
+            if($(containers[i]).attr('filter')=="off"){
+                containers[i].style.display = "none";
+            }
         }
     }
 }
@@ -39,22 +47,28 @@ function filterProductsByType(type) {
         title = cards[i].querySelector(".card-body");
         if ($(title).attr('type').toLowerCase().indexOf(type) > -1) {
             containers[i].style.display = "";
+            $(containers[i]).attr('filter',"off");
         } else {
             containers[i].style.display = "none";
+            $(containers[i]).attr('filter',"on");
         }
     }
     header_product = document.getElementById("header-products")
     switch (type) {
         case 'kit':
+            window.history.replaceState(null, null, "?kit");
             header_product.innerText = "Kits recomendados";
             break;
         case 'ingrediente':
+            window.history.replaceState(null, null, "?ingrediente");
             header_product.innerText = "Ingredientes recomendados";
             break;
         case 'alimento':
+            window.history.replaceState(null, null, "?alimento");
             header_product.innerText = "Platos recomendados";
             break;
         default:
+            window.history.replaceState(null, null, "?");
             header_product.innerText = "Productos recomendados";
             break;
     }
