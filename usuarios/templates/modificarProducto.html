@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendedor</title>
+
+<link rel="stylesheet" href="{% static 'css/modificarProducto.css' %}">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="ethnic">
+    <main> 
+        <section class="box">
+                <div class="one">
+                    <ul>
+                      <li>
+                        <a href="{% url 'usuarios:vendedorHome' %}">
+                          Inventario
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'productos:crear' %}">
+                          Agregar nuevo producto
+                        </a>
+                      </li>
+                    </ul>
+                </div>
+                <div class="two">
+                  <p>Modificar Producto</p>
+                  {% if error %}
+                    <h3>{{error}}</h3>
+                  {% else %}
+                    <form method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="nombreproducto" class="form-label">Nombre del producto, ingrediente o kit</label>
+                          <input value="{{producto.nombre}}" type="text" class="form-control" id="nombreproducto" name="nombreproducto">
+                        </div>
+                        <div class="form-floating" id="textarea">
+                          <textarea valu class="form-control" placeholder="Descripción del producto, kit o ingrediente" id="descripcion" name="descripcion" style="height: 200px">{{producto.descripcion}}</textarea>
+                          <label for="descripcion">Descripción</label>
+                        </div>
+                        <div class="mb-3">
+                          <label for="precio" class="form-label">Precio MXN</label>
+                          <input value="{{producto.precio}}" type="number" class="form-control" id="precio" name="precio">
+                        </div>
+                        <div class="mb-3">
+                          <label for="stock" class="form-label">Stock</label>
+                          <input placeholder="No obligatorio" value="{{producto.stock}}" type="number" class="form-control" id="stock" name="stock">
+                        </div>
+                        <div class="form-floating" style="color: black;">
+                          <select class="form-select" id="tipo" name="tipo" aria-label="Floating label select example">
+                            <option value="alimento" {% if producto.tipo == 'alimento' %} selected {% endif %}>Alimento</option>
+                            <option value="kit" {% if producto.tipo == 'kit' %} selected {% endif %}>Kit</option>
+                            <option value="ingrediente" {% if producto.tipo == 'ingrediente' %} selected {% endif %}>Ingrediente</option>
+                          </select>
+                          <label style="color: black;" for="tipo">Tipo de producto</label>
+                        </div>
+                        <div id="checksorigen">
+                          <h5>Categorías del producto</h5>
+                        <div class="btn-group" role="group" name>
+                          {% for categoria in categorias %}
+                          <input type="checkbox" class="btn-check" id="{{categoria.nombre}}" name="categorias" value="{{categoria.id}}" autocomplete="off" {% if categoria.id in categoriasSeleccionadas %}checked{% endif %}>
+                          <label class="btn btn-outline-primary capitalizar" for="{{categoria.nombre}}">{{categoria.nombre}}</label>
+                          {% endfor %}
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="imagen" class="form-label">Imagen del producto</label>
+                          <input class="form-control" type="file" id="imagen" name="imagen">
+                        </div>
+                        <button id="btnregistrar" type="submit" class="btn btn-primary btns">Modificar producto</button>
+                    </form>
+                  {% endif %}
+                </div>
+        </section>
+    
+    </main>
+</body>
+</html>
+
+{% endblock %}
