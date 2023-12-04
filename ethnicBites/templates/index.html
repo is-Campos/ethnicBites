@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+</head>
+<body class="ethnic">
+    <main> 
+        <section class="box">
+                <div class="one">
+                    <span class="menu-text">Menú</span>
+                    <div class="list-group menu-index">
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" aria-current="true">
+                          Inicio
+                        </button>
+                        <button type="button" id="btn_producto" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_producto()">Todos los productos</button>
+                        <button type="button" id="btn_alimento" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_alimento()">Alimentos</button>
+                        <button type="button" id="btn_kit" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_kit()">Kits de comida</button>
+                        <button type="button" id="btn_ingrediente" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_ingrediente()">Ingredientes</button>
+                        <button type="button" id="btn_carrito" data-url="{% url 'carrito:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_cart()">Carrito</button>
+                        <button type="button" id="btn_direcciones" class="list-group-item list-group-item-action product-category-button" onclick="go_to_direcciones()">Direcciones</button>
+                      </div>
+                </div>
+                <div class="home">
+                    <img class="ethnic-banner" src="{% static 'imgs/ethnicBanner.jpg' %}">
+                    <h2 class="ethnic-intro-text">Experimenta la gran diversidad</h2>
+                    <div class="columns-container">
+                        <div class="two">
+                            <p class="header-text">Atrévete a probar nuevas cosas</p>
+                            <p>Ordena lo que gustes entre los diferentes tipos de comida</p>
+                            <img class="ethnic-image" src="{% static 'imgs/EthnicAlimento.jpeg' %}">
+                        </div>
+                        <div class="two">
+                            <p class="header-text">Prepara tu propia comida</p>
+                            <p>Si te gusta hacer tu propia comida, ordena tu kid personalizado</p>
+                            <img class="ethnic-image" src="{% static 'imgs/EthnicKit.jpg' %}">
+                        </div>
+                        <div class="two">
+                            <p class="header-text">Prueba nuevos ingredientes</p>
+                            <p>Experimenta y usa nuevos ingredientes de diferentes lugares</p>
+                            <img class="ethnic-image" src="{% static 'imgs/EthnicIngrediente.jpeg' %}">
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+    
+    </main>
+</body>
+</html>
+
+{% endblock %}
