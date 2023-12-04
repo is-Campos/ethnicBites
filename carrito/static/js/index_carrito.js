@@ -170,3 +170,9 @@ $(function(){
         }
     });  
 });
+
+$(function(){
+    $('.btn_filter').click(function (e) {
+        $('.btn_filter').removeClass('active')
+    });
+});

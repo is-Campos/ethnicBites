@@ -131,7 +131,7 @@
 }
 
 .btn-filter{
-  width: 15%;
+  width: 20%;
   padding: 0;
   border-radius: 1em;
   background-color: white;
@@ -140,7 +140,7 @@
 }
 
 .btn-filter:hover{
-  width: 15%;
+  width: 20%;
   padding: 0;
   border-radius: 1em;
   background-color: white;
@@ -151,9 +151,25 @@
 }
 
 .btn-image {
-  margin-top: 0.5rem;
   background-size: cover;
   width: 88%;
   overflow: hidden;
   border-radius: 1em;
+}
+
+.second-row-payment-types{
+  margin-top: 0.5em;
+}
+
+.direccion-container{
+  margin-top: 1em;
+}
+
+.ethnic-bold{
+  font-weight: bolder;
+}
+
+.btn-payment-container{
+  display: flex;
+  justify-content: center;
 }
