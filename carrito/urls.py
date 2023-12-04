@@ -8,7 +8,7 @@ app_name = "carrito"
 
 urlpatterns = [
     path("", views.cart, name="index"),
-    path('delete_from_cart/', views.delete_from_cart),
+    path('delete_from_cart/', views.delete_from_cart,name='delete_from_cart'),
     path('delete_cart/', views.delete_cart),
     path('update_quantity_cart/', views.update_quantity_cart)
 ]

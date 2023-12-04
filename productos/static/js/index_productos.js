@@ -80,6 +80,11 @@ function go_to_cart(){
     location.href=url;
 }
 
+function go_to_home(){
+    var url = $("#btn_home").attr("data-url");
+    location.href=url;
+}
+
 $(function(){
     filterProductsByType(window.location.search.substring(1));
 

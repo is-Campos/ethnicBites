@@ -43,3 +43,31 @@ class Products(TestCase):
         self.assertEqual(self.vendedor, producto_creado.idVendedor)
         self.assertEqual('alimento', producto_creado.tipo)
         self.assertFalse(self.is_image_corrupted(producto_creado.imagen.read()))
+
+    def test_modify_product(self):
+        self.vendedor = get_user_model().objects.create_user(
+            username='vendedor_test',
+            password='password123',
+            role='vendedor'
+        )
+        self.client.login(username='vendedor_test', password='password123')
+        imagen = open("productos/files/imagenesProductos/sushi.png",'rb') 
+        response = self.client.post(reverse('productos:crear'), {
+            'nombre': 'Producto de Prueba',
+            'descripcion': 'Descripción de prueba',
+            'precio': 10,
+            'stock': 5,
+            'idVendedor':self.vendedor,
+            'tipo': 'alimento',
+            'imagen': imagen
+        })
+
+        self.assertEqual(response.status_code, 302)
+
+        nuevo_precio = 30
+        producto_creado = Producto.objects.filter(nombre='Producto de Prueba').first()
+        producto_creado.precio = nuevo_precio
+        producto_creado.save()
+
+        self.assertIsNotNone(producto_creado)     
+        self.assertEqual(nuevo_precio, producto_creado.precio)

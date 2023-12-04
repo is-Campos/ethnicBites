@@ -20,7 +20,7 @@
                 <div class="one">
                     <span class="menu-text">Menú</span>
                     <div class="list-group menu-products">
-                        <button type="button" class="list-group-item list-group-item-action product-category-button" aria-current="true">
+                        <button type="button" id="btn_home" data-url="{% url 'home' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_home()" aria-current="true">
                           Inicio
                         </button>
                         <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('')">Todos</button>

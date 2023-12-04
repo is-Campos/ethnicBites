@@ -1,9 +1,7 @@
-from django.shortcuts import render
-from productos.models import Producto
 from carrito.models import Carrito, CarritoDetalle
 from pagos.models import Pago, MetodoDePago
 from pedidos.models import Pedido, ProductoPedido
-from django.http import Http404, HttpResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 
@@ -25,11 +23,14 @@ def pagar(request):
             producto_pedido = ProductoPedido.objects.create(idPedido=nuevoPedido, idProducto=cart_product.idProducto, cantidad=cart_product.cantidad)
             producto_pedido.save()
             product = cart_product.idProducto
-            product.stock-=cart_product.cantidad
+            try:
+                product.stock-=cart_product.cantidad
+            except:
+                pass
             product.save()
         
         nuevoPago = Pago.objects.create(idCliente=request.user,monto=_monto,idMetodoDePago=metodoPago,idPedido=nuevoPedido,fecha=datetime.datetime.now())
         nuevoPago.save()
     except:
-        return HttpResponse("Error en el pago")
+        return HttpResponse("Error en el pago", status=500)
     return HttpResponse(status=200)
