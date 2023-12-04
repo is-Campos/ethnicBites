@@ -18,6 +18,7 @@ def alimentos(request):
 @csrf_exempt
 def add_cart(request):
     pk = request.POST['product']
+    quantity = request.POST['quantity']
     producto = Producto.objects.get(id=pk)
     try:
         carrito = Carrito.objects.get(idCliente=request.user)
@@ -29,7 +30,7 @@ def add_cart(request):
         cart_product = CarritoDetalle.objects.filter(idCarrito=carrito, idProducto=producto).first()
         cart_product.cantidad+=1
     except:
-        cart_product = CarritoDetalle.objects.create(idCarrito=carrito, idProducto=producto, cantidad=1)    
+        cart_product = CarritoDetalle.objects.create(idCarrito=carrito, idProducto=producto, cantidad=quantity)    
     cart_product.save()
     return HttpResponse(status=200)
 

@@ -8,14 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
-    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
-    <link rel="stylesheet" href="{% static 'css/index_carrito.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-
-    <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="{% static 'css/index_carrito.css' %}">
     <script src="{% static 'js/index_carrito.js' %}"></script>
 </head>
@@ -51,7 +47,7 @@
                                                     <span class="glyphicon glyphicon-minus icon-minus"></span>
                                                 </button>
                                             </span>
-                                            <input type="text" product_id="{{p.idProducto.id}}" name="quantity-btn[{{p.idProducto.id}}]" class="form-control input-number" value="{{p.cantidad}}" min="1" max="{{p.idProducto.stock}}">
+                                            <input type="text" product_id="{{p.idProducto.id}}" name="quantity-btn[{{p.idProducto.id}}]" class="form-control input-number" value="{{p.cantidad}}" min="1" max="{% if p.idProducto.stock is not null %}{{p.idProducto.stock}}{% else %}10{% endif %}">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-success btn-number ethnic-btn" data-type="plus" data-field="quantity-btn[{{p.idProducto.id}}]">
                                                     <span class="glyphicon glyphicon-plus icon-plus"></span>
@@ -117,9 +113,9 @@
                     </div>
                 </div>
                 {% endif %}
-                </section>
-            </main>
-        </body>
-        </html>
+        </section>
+    </main>
+</body>
+</html>
         
-        {% endblock %}
+{% endblock %}

@@ -46,6 +46,7 @@
 .button-container{
   display: flex;
   justify-content: center;
+  margin-top: 0.5em;
 }
 
 .ethnic-btn{
@@ -55,9 +56,15 @@
   position: absolute;
 }
 
+.ethnic-btn-input{
+  background: #9DAB72;
+  border-color: #9DAB72;
+}
+
 .ethnic{
   background-color: #d5ca98;
   height: 100%;
+  font-family: 'Arial', sans-serif;
 }
 
 .image-container{
@@ -67,4 +74,24 @@
 }
 .product-image{
   width: -webkit-fill-available;
+}
+
+.icon-minus:before{
+  content: "\2212";
+}
+
+.icon-plus:before{
+  content: "\2b";
+}
+
+.plus-minus-button{
+  position: absolute;
+  width: 31%;
+  bottom: 2em;
+}
+
+.quantity-text{
+  align-self: center;
+  margin-bottom: 0;
+  margin-right: 1em;
 }
