@@ -23,9 +23,9 @@
                         <button type="button" class="list-group-item list-group-item-action product-category-button" aria-current="true">
                           Inicio
                         </button>
-                        <button type="button" class="list-group-item list-group-item-action active product-category-button-active">Alimentos</button>
-                        <button type="button" class="list-group-item list-group-item-action product-category-button">Kits de comida</button>
-                        <button type="button" class="list-group-item list-group-item-action product-category-button">Ingredientes</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('alimento')">Alimentos</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('kit')">Kits de comida</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('ingrediente')">Ingredientes</button>
                         <button type="button" id="btn_carrito" data-url="{% url 'carrito:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_cart()">Carrito</button>
                         <button type="button" class="list-group-item list-group-item-action product-category-button">Direcciones</button>
                       </div>
@@ -45,10 +45,8 @@
 
                     <div class="filter-buttons-group">
                     <button id="italiana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
-                        <div>
                         <img class="btn-image" src="{% static 'imgs/icons_filters/italiana.png' %}">
                         <h2 class="filter-button-text">Italiana</h2>
-                    </div>
                     </button>
 
                     <button id="mexicana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
@@ -65,21 +63,31 @@
                         <img class="btn-image" src="{% static 'imgs/icons_filters/francesa.png' %}">
                         <h2 class="filter-button-text">Francesa</h2>
                     </button>
+
+                    <button id="vegana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/vegana.png' %}">
+                        <h2 class="filter-button-text">Vegana</h2>
+                    </button>
+
+                    <button id="kosher" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/kosher.png' %}">
+                        <h2 class="filter-button-text">Kosher</h2>
+                    </button>
                     </div>
 
-                    <p class="header-dishes">Platos recomendados</p>
+                    <p class="header-dishes" id="header-products">Platos recomendados</p>
                     
                     {% if all_products %}
                     <div id="cards-container" class="row row-cols-1 row-cols-md-3 g-4">
                         {% for p in all_products %}
-                        <div class="col">
+                        <div class="col col-product">
                             <a href="{{p.id}}">
                             <div class="card h-100 card-products">
                                 <div class="card-image-container">
                                 <img src="{{p.imagen}}" class="card-img-top card-img-product"
                                 alt="{{p.nombre}}" />
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" type="{{p.tipo}}">
                                     <h5 class="card-title">{{p.nombre}}</h5>
                                     <p class="card-text">
                                     </p>

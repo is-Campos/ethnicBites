@@ -112,3 +112,37 @@
 .icon-plus:before{
     content: "\2b";
 }
+
+.filter-buttons-group{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-filter{
+  width: 15%;
+  padding: 0;
+  border-radius: 1em;
+  background-color: white;
+  border-color: transparent;
+  color: black;
+}
+
+.btn-filter:hover{
+  width: 15%;
+  padding: 0;
+  border-radius: 1em;
+  background-color: white;
+  border-color: transparent;
+  color: black;
+  background-color: #b7b7b7;
+  border-color: #b7b7b7;
+}
+
+.btn-image {
+  margin-top: 0.5rem;
+  background-size: cover;
+  width: 88%;
+  overflow: hidden;
+  border-radius: 1em;
+}

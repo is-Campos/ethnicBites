@@ -72,6 +72,42 @@
                         <div class="details-container">
                             <h1>Pago</h1>
                             <p>Selecciona tu método de pago</p>  
+
+                            <div class="filter-buttons-group">
+                                <button id="italiana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/italiana.png' %}">
+                                </button>
+            
+                                <button id="mexicana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/mexicana.png' %}">                                 
+                                </button>
+            
+                                <button id="japonesa" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/japonesa.png' %}">   
+                                </button>
+            
+                                <button id="francesa" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/francesa.png' %}">
+                                </button>
+                            </div>
+                            <div class="filter-buttons-group">
+                                <button id="italiana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/italiana.png' %}">
+                                </button>
+            
+                                <button id="mexicana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/mexicana.png' %}">                                 
+                                </button>
+            
+                                <button id="japonesa" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/japonesa.png' %}">   
+                                </button>
+            
+                                <button id="francesa" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <img class="btn-image" src="{% static 'imgs/icons_filters/francesa.png' %}">
+                                </button>
+                            </div>
+                            <button class="btn btn-primary ethnic-btn" id="btn_pago" value=1 data-url="{% url 'pagos:pagar' %}" onclick="pay(this)">Pagar</button>
                         </div>
                     </div>
 

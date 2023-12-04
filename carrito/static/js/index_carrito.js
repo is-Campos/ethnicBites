@@ -9,13 +9,19 @@ function delete_from_cart(p){
     success: function() {
         productContainer = document.getElementById(product);
         productContainer.remove();
-        calculate_total();
-        alert('Producto eliminado del carrito');
+        total = calculate_total();
+        if(total==0){
+            delete_cart();
+        }
+        else{
+            alert('Producto eliminado del carrito');
+        }
+        
     }
     }); 
 }
 
-function delete_cart(){
+function delete_cart(paid=false){
     const csrftoken = Cookies.get('csrftoken');
     $.ajax({
     url: 'delete_cart/',
@@ -25,7 +31,9 @@ function delete_cart(){
         cart = document.getElementById("cart");
         cart.remove();
         document.getElementById("details-container").innerHTML += "<p id='empty-cart'>No hay productos en el carrito</p>";
-        alert('Carrito vaciado');
+        if(!paid){
+            alert('Carrito vaciado');
+        } 
     }
     }); 
 }
@@ -67,6 +75,25 @@ function calculate_total(){
         total_container.innerText = total;
     }
 
+    return total;
+
+}
+
+function pay(metodo_pago){
+    const csrftoken = Cookies.get('csrftoken');
+    var _url = $("#btn_pago").attr("data-url");
+    const amount = calculate_total();
+    const metodo = metodo_pago.value;
+    $.ajax({
+    url: _url,
+    data: { amount: amount, metodo:metodo },
+    headers: {'X-CSRFToken': csrftoken},
+    method : 'POST',
+    success: function() {
+        alert('Pago exitoso');
+        delete_cart(true);
+    }
+    }); 
 }
 
 $(function(){

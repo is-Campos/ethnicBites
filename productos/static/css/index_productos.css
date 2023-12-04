@@ -33,12 +33,6 @@
   text-align: left;
 }
 
-.product-category-button-active{   
-  text-align: left;
-  background-color: #c15268 !important;
-  border-color:#c15268 !important
-}
-
 .menu-products{
   margin-top: 1em;
 }
@@ -103,6 +97,10 @@
 
 .btn-link{
   color:white;
+}
+
+.col-product{
+  max-height: 35vw;
 }
 
 /*Barra de búsqueda*/
