@@ -1,13 +1,73 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>Crear nuevo producto</h1>
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {{ error }}
-  <p>
-    <button>Crear producto</button>
-  </p>
-</form>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crear Producto</title>
+    <link rel="stylesheet" href="{% static 'css/crearproductoform.css' %}" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body class="ethnic">
+    <main>
+      <section class="box">
+        <div class="one">
+          <ul>
+            <li>
+              <h3>Panel de Vendedor</h3>
+            </li>
+            <li>
+              <a href="{% url 'usuarios:vendedorHome' %}"> Inventario </a>
+            </li>
+            <li>
+              <a href="{% url 'productos:crear' %}" id="selectedItemMenu">
+                Agregar nuevo producto
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="two">
+          <h1>Crear nuevo producto</h1>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {% for field in form %}
+            <div class="form-group">{{ field.label_tag }} {{ field }}</div>
+            {% endfor %}
+            <div id="checksorigen">
+              <h5>Categorías del producto</h5>
+              <div class="btn-group" role="group" name>
+                {% for categoria in categorias %}
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="{{categoria.nombre}}"
+                  name="categorias"
+                  value="{{categoria.id}}"
+                  autocomplete="off"
+                  {%
+                  if
+                  categoria.id
+                  in
+                  categoriasSeleccionadas
+                  %}checked{%
+                  endif
+                  %}
+                />
+                <label
+                  class="btn btn-outline-primary capitalizar"
+                  for="{{categoria.nombre}}"
+                  >{{categoria.nombre}}</label
+                >
+                {% endfor %}
+              </div>
+            </div>
+            {{ error }}
+            <p>
+              <button class="btn btns">Crear producto</button>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
 {% endblock %}

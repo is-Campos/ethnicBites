@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Registrar Vendedor</h1>
+<form method="POST">
+  {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre del vendedor, restaurante o negocio</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Confirmar contraseña</label>
+      <input type="password" class="form-control" id="password2" name="password2">
+    </div>
+  </form>
+  <p>
+    {{ error }}
+  </p>
+    <button type="submit" class="btn btn-primary">Registrar Vendedor</button>
+</form>
+
+{% endblock %}
+
+
+---------------------------------------------------------------------------------------------------
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendedor</title>
+
+<link rel="stylesheet" href="{% static 'css/vendedorHome.css' %}">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="ethnic">
+    <main> 
+        <section class="box">
+                <div class="one">
+                    <ul>
+                      <li>
+                        <h3>Panel de Vendedor</h3>
+                      </li>
+                      <li>
+                        <a href="{% url 'usuarios:vendedorHome' %}" id="selectedItemMenu">
+                          Inventario
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'productos:crear' %}">
+                          Agregar nuevo producto
+                        </a>
+                      </li>
+                    </ul>
+                </div>
+                <div class="two">
+                  {% if not listaProductos %}
+                    <a href="{% url 'productos:crear' %}">No has registrado productos aún, te gustaría registrar uno ahora?</a>
+                  {% else %}
+                    {% for producto in listaProductos %}
+                    <div class="card mb-3" style="max-width: 540px;" id="productcard">
+                      <div class="row g-0" id="productcard2">
+                        <div class="col-md-4">
+                          <img src="{{ producto.imagen.url }}" id="imgproducto" class="img-fluid rounded-start" alt="{{producto.nombre}}" {{producto.nombre}}>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h5 class="card-title textcard">{{producto.nombre}}</h5>
+                            <p class="card-text textcard">{{producto.descripcion}}</p>
+                            <div>
+                              <p class="card-text textcard"><small class="text-body-secondary">Precio: ${{producto.precio}}</small></p>
+                              <p class="card-text textcard"><small class="text-body-secondary">Stock: {% if producto.stock is None %} No definido {% else %} {{producto.stock}} {% endif %}</small></p>
+                              <a href="{% url 'usuarios:modificarproducto' producto.pk %}" class="btn btn-primary btns">Modificar</a>
+                              <a href="{% url 'usuarios:deleteProduct' producto.pk %}" class="btn btn-primary btns">Eliminar</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+        </section>
+    
+    </main>
+</body>
+</html>
+
+{% endblock %}

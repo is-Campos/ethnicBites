@@ -1,0 +1,121 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedidos</title>
+
+    <link rel="stylesheet" href="{% static 'css/pedidos.css' %}" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body class="ethnic">
+    <main>
+      <section class="box">
+        <div class="one">Pedidos</div>
+        <div class="two">
+          {% if template == "cliente" %}
+          <h1>Hola Cliente</h1>
+          {% if lista_pedidos %}
+          <h4 class="pedidostext">Pedidos del {{template}}</h4>
+          {% for pedido in lista_pedidos %}
+          <div class="card mb-3" style="max-width: 100%">
+            <div class="row g-0">
+              <div class="col-md-4 imgpedidocontainer">
+                <img
+                  src="{{ pedido.productos.0.idProducto.imagen.url}}"
+                  id="imgpedido"
+                  class="img-fluid rounded-start"
+                  alt="{{producto.idProducto.nombre}}"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body" id="cardtext">
+                  <h5 class="card-title">
+                    Número de pedido {{pedido.idPedido.id}}
+                  </h5>
+                  {% for producto in pedido.productos %}
+                  <div class="pdata">
+                    <p class="card-text">{{producto.idProducto.nombre}} de <strong>{{producto.idProducto.idVendedor.username}}</strong></p>
+                    <p class="textcantidad">
+                      Cantidad: {{producto.cantidad}} x
+                      ${{producto.idProducto.precio}}
+                    </p>
+                  </div>
+                  <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+                  {% endfor %}
+                  <h5>Total: {{pedido.total}}</h5>
+                  <h5>
+                    Dirección:
+                    {{pedido.idPedido.idCliente.idDireccion.nombreCompleto}}
+                    {{pedido.idPedido.idCliente.idDireccion.calle}}
+                    {{pedido.idPedido.idCliente.idDireccion.numeroExterior}}
+                    {{pedido.idPedido.idCliente.idDireccion.colonia}}
+                    {{pedido.idPedido.idCliente.idDireccion.codigoPostal}}
+                    {{pedido.idPedido.idCliente.idDireccion.ciudad}}
+                    {{pedido.idPedido.idCliente.idDireccion.estado}}
+                    {{pedido.idPedido.idCliente.idDireccion.telefono}}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} {% else %}
+          <h2>{{error}}</h2>
+          {% endif %} {% else %}
+          <h1>Hola vendedor</h1>
+          {% if lista_pedidos_vendedor %}
+          <h4 class="pedidostext">Pedidos del {{template}}</h4>
+          {% for pedido in lista_pedidos_vendedor %}
+          <div class="card mb-3" style="max-width: 100%">
+            <div class="row g-0">
+              <div class="col-md-4 imgpedidocontainer">
+                <img
+                  src="{{ pedido.productos.0.idProducto.imagen.url}}"
+                  id="imgpedido"
+                  class="img-fluid rounded-start"
+                  alt="{{producto.idProducto.nombre}}"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body" id="cardtext">
+                  <h5 class="card-title">
+                    Número de pedido {{pedido.idPedido.id}}
+                  </h5>
+                  {% for producto in pedido.productos %}
+                  <div class="pdata">
+                    <p class="card-text">{{producto.idProducto.nombre}}</p>
+                    <p class="textcantidad">
+                      Cantidad: {{producto.cantidad}} x
+                      ${{producto.idProducto.precio}}
+                    </p>
+                  </div>
+                  <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+                  {% endfor %}
+                  <h5>Total: {{pedido.total}}</h5>
+                  <h5>
+                    Dirección:
+                    {{pedido.idPedido.idCliente.idDireccion.nombreCompleto}}
+                    {{pedido.idPedido.idCliente.idDireccion.calle}}
+                    {{pedido.idPedido.idCliente.idDireccion.numeroExterior}}
+                    {{pedido.idPedido.idCliente.idDireccion.colonia}}
+                    {{pedido.idPedido.idCliente.idDireccion.codigoPostal}}
+                    {{pedido.idPedido.idCliente.idDireccion.ciudad}}
+                    {{pedido.idPedido.idCliente.idDireccion.estado}}
+                    {{pedido.idPedido.idCliente.idDireccion.telefono}}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} {% else %}
+          <h2>{{error}}</h2>
+          {% endif %} {% endif %}
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+{% endblock %}

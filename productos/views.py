@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.views import generic
 from .forms import CrearProductoForm
 from .models import Producto
+from categorias.models import Categoria,CategoriaDetalle
 
 
 class IndexView(generic.TemplateView):
@@ -21,13 +22,21 @@ def crear(request):
             nuevoproducto = Producto.objects.create(nombre=request.POST['nombre'], descripcion=request.POST['descripcion'], precio=request.POST[
                                                     'precio'], stock=stock, idVendedor=request.user, tipo=request.POST['tipo'], imagen=request.FILES['imagen'])
             nuevoproducto.save()
-            return redirect('/productos')
+            categoriasSeleccionadasForm = request.POST.getlist('categorias')
+            categorias_a_agregar = [int(categoria_id) for categoria_id in categoriasSeleccionadasForm]
+
+            for cat_id in categorias_a_agregar:
+                categoria_instance = Categoria.objects.get(pk=cat_id)
+                CategoriaDetalle.objects.create(idProducto=nuevoproducto, idCategoria=categoria_instance)
+
+            return redirect('usuarios:vendedorHome')
         else:
             return render(request, 'productos/crearproductoform.html', {'form': form, 'error': 'Verifica que todos los campos sean correctos'})
 
     else:
         form = CrearProductoForm(request.POST, request.FILES)
-        return render(request, 'productos/crearproductoform.html', {'form': form})
+        categorias = Categoria.objects.all()
+        return render(request, 'productos/crearproductoform.html', {'form': form, 'categorias':categorias})
 
 def productodetalle(request, id):
     producto = Producto.objects.get(pk=id)

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendedor</title>
+
+<link rel="stylesheet" href="{% static 'css/vendedorHome.css' %}">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="ethnic">
+    <main> 
+        <section class="box">
+                <div class="one">
+                    <ul>
+                      <li>
+                        <h3>Panel de Vendedor</h3>
+                      </li>
+                      <li>
+                        <a href="{% url 'usuarios:vendedorHome' %}" id="selectedItemMenu">
+                          Inventario
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'productos:crear' %}">
+                          Agregar nuevo producto
+                        </a>
+                      </li>
+                    </ul>
+                </div>
+                <div class="two">
+                  {% if not listaAlimentos and not listaKits and not listaIngredientes %}
+                  <pi id="errormessage">
+                    No has registrado productos aún, te gustaría <a href="{% url 'productos:crear' %}">registrar uno ahora?</a>
+                  </pi>
+                  {% else %}
+                  <div id="inventarioAlimentos">
+                    <h3>Alimentos</h3>
+                    {% if not listaAlimentos %}
+                      <h4>No has registrado alimentos aún</h4>
+                    {% else %}
+                      {% for producto in listaAlimentos %}
+                      <div class="card mb-3" style="max-width: 540px;" id="productcard">
+                        <div class="row g-0" id="productcard2">
+                          <div class="col-md-4">
+                            <img src="{{ producto.imagen.url }}" id="imgproducto" class="img-fluid rounded-start" alt="{{producto.nombre}}" {{producto.nombre}}>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title textcard">{{producto.nombre}}</h5>
+                              <p class="card-text textcard">{{producto.descripcion}}</p>
+                              <div>
+                                <p class="card-text textcard"><small class="text-body-secondary">Precio: ${{producto.precio}}</small></p>
+                                <p class="card-text textcard"><small class="text-body-secondary">Stock: {% if producto.stock is None %} No definido {% else %} {{producto.stock}} {% endif %}</small></p>
+                                <a href="{% url 'usuarios:modificarproducto' producto.pk %}" class="btn btn-primary btns">Modificar</a>
+                                <a href="{% url 'usuarios:deleteProduct' producto.pk %}" class="btn btn-primary btns">Eliminar</a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      {% endif %}
+                      </div>
+                      <div id="inventarioKits">
+                        <h3>Kits</h3>
+                        {% if not listaKits %}
+                        <h4>No has registrado kits aún</h4>
+                    {% else %}
+                      {% for producto in listaKits %}
+                      <div class="card mb-3" style="max-width: 540px;" id="productcard">
+                        <div class="row g-0" id="productcard2">
+                          <div class="col-md-4">
+                            <img src="{{ producto.imagen.url }}" id="imgproducto" class="img-fluid rounded-start" alt="{{producto.nombre}}" {{producto.nombre}}>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title textcard">{{producto.nombre}}</h5>
+                              <p class="card-text textcard">{{producto.descripcion}}</p>
+                              <div>
+                                <p class="card-text textcard"><small class="text-body-secondary">Precio: ${{producto.precio}}</small></p>
+                                <p class="card-text textcard"><small class="text-body-secondary">Stock: {% if producto.stock is None %} No definido {% else %} {{producto.stock}} {% endif %}</small></p>
+                                <a href="{% url 'usuarios:modificarproducto' producto.pk %}" class="btn btn-primary btns">Modificar</a>
+                                <a href="{% url 'usuarios:deleteProduct' producto.pk %}" class="btn btn-primary btns">Eliminar</a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      {% endif %}
+                      </div>
+                      <div id="inventarioIngredientes">
+                        <h3>Ingredientes</h3>
+                        {% if not listaIngredientes %}
+                        <h4>No has registrado ingredientes aún</h4>
+                    {% else %}
+                      {% for producto in listaIngredientes %}
+                      <div class="card mb-3" style="max-width: 540px;" id="productcard">
+                        <div class="row g-0" id="productcard2">
+                          <div class="col-md-4">
+                            <img src="{{ producto.imagen.url }}" id="imgproducto" class="img-fluid rounded-start" alt="{{producto.nombre}}" {{producto.nombre}}>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title textcard">{{producto.nombre}}</h5>
+                              <p class="card-text textcard">{{producto.descripcion}}</p>
+                              <div>
+                                <p class="card-text textcard"><small class="text-body-secondary">Precio: ${{producto.precio}}</small></p>
+                                <p class="card-text textcard"><small class="text-body-secondary">Stock: {% if producto.stock is None %} No definido {% else %} {{producto.stock}} {% endif %}</small></p>
+                                <a href="{% url 'usuarios:modificarproducto' producto.pk %}" class="btn btn-primary btns">Modificar</a>
+                                <a href="{% url 'usuarios:deleteProduct' producto.pk %}" class="btn btn-primary btns">Eliminar</a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      {% endif %}
+                      </div>
+                      </div>
+                      </div>
+                  </div>
+                  {% endif %}
+                </div>
+        </section>
+    
+    </main>
+</body>
+</html>
+
+{% endblock %}
