@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.address-form {
+    background-color: #9D213A;
+    color: white;
+    width: 40%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    margin-top: 80vh;
+}
+
+.address-form h1{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    margin-top: 20PX;
+}
+
+.address-form button {
+    display: block; 
+    margin: 0 auto; 
+}
+
+.address-form button {
+    border-radius: 10px !important;
+    background-color: #9DAB72 !important;
+    color: #ffffff !important;
+    width: 120px;
+    height: 40px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+form {
+    margin-top: 30px;
+}
+
+.address-form input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.header-container h1 {
+    margin: 0;
+    line-height: 0.5; 
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.saved-addresses {
+    background-color: #9D213A;
+    color: white;
+    width: 30%;
+    height: 600px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    margin-top: 64vh;
+}
+
+.saved-addresses h1{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.header-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+.form-group {
+    width: 100%;
+}
+
+.card-body {
+    color: #000; 
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.card-text {
+    font-size: 16px; 
+}

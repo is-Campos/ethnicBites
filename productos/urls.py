@@ -6,10 +6,16 @@ from . import views
 app_name = "productos"
 
 urlpatterns = [
+<<<<<<< HEAD
+  path("", views.IndexView.as_view(), name="index"),
+  path('crear/', views.crear, name='crear'),
+  path('<int:id>', views.productodetalle)
+=======
   path("", views.alimentos, name="index"),
   path('crear/', views.crear, name='crear'),
   path('<int:id>', views.productodetalle),
   path('add_cart/', views.add_cart, name='add_cart')
+>>>>>>> remote/master
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

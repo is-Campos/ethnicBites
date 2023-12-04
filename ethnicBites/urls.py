@@ -25,8 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('productos/', include("productos.urls")),
     path('usuarios/', include("usuarios.urls")),
-    path('pedidos/', include("pedidos.urls"))
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('pedidos/', include("pedidos.urls")),
     path('carrito/', include("carrito.urls")),
     path('pagos/', include("pagos.urls")),
     path('', home, name='home')
