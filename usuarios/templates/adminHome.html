@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+
+<link rel="stylesheet" href="{% static 'css/adminHome.css' %}">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body class="ethnic">
+    <main> 
+        <section class="box">
+                <div class="one">
+                    Agregar Vendedor
+                </div>
+                <div class="two">
+                    <p>Agregar nuevo vendedor</p>
+                    <form method="POST">
+                      {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="name" class="form-label">Nombre del vendedor, restaurante o negocio</label>
+                          <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="mb-3">
+                          <label for="username" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="mb-3">
+                          <label for="password2" class="form-label">Confirmar contraseña</label>
+                          <input type="password" class="form-control" id="password2" name="password2">
+                        </div>
+                      </form>
+                      <p>
+                        {{ error }}
+                      </p>
+                        <button id="btnregistrar" type="submit" class="btn btn-primary">Registrar Vendedor</button>
+                    </form>
+                </div>
+        </section>
+    
+    </main>
+</body>
+</html>
+
+{% endblock %}

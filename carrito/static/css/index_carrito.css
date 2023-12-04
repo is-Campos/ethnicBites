@@ -1,0 +1,175 @@
+.box {
+    display: flex;
+    margin-top: 1em;
+    color: white;
+    margin-bottom: 1em;
+    }
+    
+  .one {
+    flex: 0.6;
+    padding: 1em;
+    margin-left: 1em;
+    background-color: #c72546;
+    text-align: center;  
+    display: flex;
+    padding-right: 0em;
+  }
+
+  .one-np {
+    flex: 1;
+    padding: 1em;
+    margin-left: 1em;
+    background-color: #c72546;
+    text-align: center;  
+    display: flex;
+    margin-right: 1em;
+  }
+    
+  .two {
+    flex: 0.4;
+    padding: 1em;
+    margin-right: 1em;
+    background-color: #c72546;
+    display: flex;
+    padding-left: 0em
+  }
+  
+  .ethnic{
+    background-color: #d5ca98;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .card-container {
+    flex: 1;
+    padding: 1em;
+    margin-right: 1em;
+    background-color: white;
+    margin-left: 1em;
+    display: flex;
+    width: 100%;
+  }
+
+.details-container {
+  flex: 1;
+  padding: 1em;
+  margin: 1em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  background-color: white;
+  
+  justify-content: space-around;
+  width: -webkit-fill-available;
+  position: relative;
+  color: black;
+}
+
+.product-details-container{
+    display: flex;
+    justify-content: space-between;
+    margin-left: -1em;
+}
+
+.image-container{
+    width: 18vw;
+    max-height: 11vw;
+    display: flex;
+}
+
+.product-image{
+    width: -webkit-fill-available;
+    height: 100%;
+}
+
+.product-buttons{
+    margin-right: -2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 0.4;
+}
+
+.cart-products{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.product-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    flex: 0.6;
+}
+
+.product-description-text{
+    margin-bottom: 0rem;
+}
+
+.total-cart{
+    margin-top: 5%;
+}
+
+.ethnic-btn{
+    background: #9DAB72;
+    border-color: #9DAB72;
+}
+
+.icon-minus:before{
+    content: "\2212";
+}
+
+.icon-plus:before{
+    content: "\2b";
+}
+
+.filter-buttons-group{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-filter{
+  width: 20%;
+  padding: 0;
+  border-radius: 1em;
+  background-color: white;
+  border-color: transparent;
+  color: black;
+}
+
+.btn-filter:hover{
+  width: 20%;
+  padding: 0;
+  border-radius: 1em;
+  background-color: white;
+  border-color: transparent;
+  color: black;
+  background-color: #b7b7b7;
+  border-color: #b7b7b7;
+}
+
+.btn-image {
+  background-size: cover;
+  width: 88%;
+  overflow: hidden;
+  border-radius: 1em;
+}
+
+.second-row-payment-types{
+  margin-top: 0.5em;
+}
+
+.direccion-container{
+  margin-top: 1em;
+}
+
+.ethnic-bold{
+  font-weight: bolder;
+}
+
+.btn-payment-container{
+  display: flex;
+  justify-content: center;
+}

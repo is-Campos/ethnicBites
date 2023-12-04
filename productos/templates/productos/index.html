@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 {% load static %}
+=======
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+>>>>>>> remote/master
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>HomePage</title>
 <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
 </head>
@@ -48,3 +56,115 @@
     </main>
 </body>
 </html>
+=======
+    <title>Productos</title>
+    <link rel="stylesheet" href="{% static 'css/index_productos.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/index_productos.js' %}"></script>
+</head>
+<body class="ethnic">
+    <main> 
+        <section class="box">
+                <div class="one">
+                    <span class="menu-text">Menú</span>
+                    <div class="list-group menu-products">
+                        <button type="button" id="btn_home" data-url="{% url 'home' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_home()" aria-current="true">
+                          Inicio
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('')">Todos</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('alimento')">Alimentos</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('kit')">Kits de comida</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('ingrediente')">Ingredientes</button>
+                        <button type="button" id="btn_carrito" data-url="{% url 'carrito:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_cart()">Carrito</button>
+                        <button type="button" class="list-group-item list-group-item-action product-category-button">Direcciones</button>
+                      </div>
+                </div>
+                <div class="two">
+
+                    <div class="row height d-flex justify-content-center align-items-center">
+                        <div class="col-md-6">
+                          <div class="form">
+                            <i class="fa fa-search"></i>
+                            <input type="text" id="ethnic-search" class="form-control form-input" onkeyup="searchProducts()"  placeholder="Busca en Ethnic Bites...">
+                          </div>
+                        </div>
+                    </div>
+                    Filtrar
+                    <br> <br>
+
+                    <div class="filter-buttons-group">
+                    <button id="italiana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/italiana.png' %}">
+                        <h2 class="filter-button-text">Italiana</h2>
+                    </button>
+
+                    <button id="mexicana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/mexicana.png' %}">
+                        <h2 class="filter-button-text">Mexicana</h2>
+                    </button>
+
+                    <button id="japonesa" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/japonesa.png' %}">
+                        <h2 class="filter-button-text">Japonesa</h2>
+                    </button>
+
+                    <button id="francesa" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/francesa.png' %}">
+                        <h2 class="filter-button-text">Francesa</h2>
+                    </button>
+
+                    <button id="vegana" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/vegana.png' %}">
+                        <h2 class="filter-button-text">Vegana</h2>
+                    </button>
+
+                    <button id="kosher" type="button" class="btn btn-primary btn-filter" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        <img class="btn-image" src="{% static 'imgs/icons_filters/kosher.png' %}">
+                        <h2 class="filter-button-text">Kosher</h2>
+                    </button>
+                    </div>
+
+                    <p class="header-dishes" id="header-products">Platos recomendados</p>
+                    
+                    {% if all_products %}
+                    <div id="cards-container" class="row row-cols-1 row-cols-md-3 g-4">
+                        {% for p in all_products %}
+                        <div class="col col-product" filter="off">
+                            <a href="{{p.id}}">
+                            <div class="card h-100 card-products">
+                                <div class="card-image-container">
+                                <img src="{{p.imagen}}" class="card-img-top card-img-product"
+                                alt="{{p.nombre}}" />
+                                </div>
+                                <div class="card-body" categories="{% for category_detail in p.categoriadetalle_set.all %}
+                                {{ category_detail.idCategoria.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}" 
+                                type="{{ p.tipo }}">
+                                    <h5 class="card-title">{{p.nombre}}</h5>
+                                    <p class="card-text">
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <small>{{p.idVendedor.username}}</small>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+
+                    {% endfor %}
+                </div>
+                    {% else %}
+                    <p>No hay productos disponibles por el momento</p>
+                    {% endif %}
+  
+
+                </div>
+        </section>
+    
+    </main>
+</body>
+</html>
+
+{% endblock %}
+>>>>>>> remote/master

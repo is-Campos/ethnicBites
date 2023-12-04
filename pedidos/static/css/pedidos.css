@@ -1,0 +1,70 @@
+.box {
+  display: flex;
+  margin-top: 2em;
+  color: white;
+  display: flex;
+  margin-bottom: 1em;
+  flex-direction: row;
+  justify-content: center;
+  }
+
+  
+.one {
+  flex: 0 auto;
+  padding: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+  background-color: #A62648;
+  text-align: center;  
+  width: 10%;
+}
+  
+.two {
+  flex: 1;
+  padding: 1em;
+  margin-right: 1em;
+  background-color: #A62648;
+  max-width: 40%;
+}
+
+.ethnic{
+  background-color: #FFFCF1;
+  height: 100%;
+}
+
+#btnregistrar{
+  background-color: #7A8C51;
+  border-color: #7A8C51;
+}
+
+#cardtext{
+  color: black;
+}
+
+.textcantidad{
+  background-color: #7A8C51;
+  padding: 4px 6px;
+  max-width: max-content;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.pdata{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#imgpedido{
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgpedidocontainer{
+  min-height: 100%;
+}
+
+.pedidostext{
+  margin-bottom: 1rem;
+}
