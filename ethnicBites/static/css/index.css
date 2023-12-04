@@ -1,0 +1,72 @@
+.box {
+    display: flex;
+    margin-top: 1em;
+    color: white;
+    margin-bottom: 1em;
+}
+
+.one {
+    flex: 0 auto;
+    padding: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    background-color: #c72546;
+    text-align: center;  
+}
+    
+.two {
+    flex: 1;
+    padding: 1em;
+    margin-right: 1em;
+    background-color: #c72546;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+  
+.ethnic{
+    background-color: #d5ca98;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.product-category-button{
+    background-color: transparent;
+    color:white;
+    text-align: left;
+}
+
+.home{
+    width:81%;
+}
+
+.columns-container{
+    display: flex;
+}
+
+.ethnic-banner{
+    width:98%;
+}
+
+.ethnic-intro-text{
+    display: grid;
+    justify-content: center;
+    padding: 0.3em;
+}
+
+.ethnic-image{
+    width: 100%;
+}
+
+.menu-index{
+    margin-top: 1em;
+}
+
+.menu-text{
+    font-weight: bolder;
+}
+
+.header-text{
+    font-weight: bolder;
+}
