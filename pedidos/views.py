@@ -2,6 +2,8 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from .models import Pedido, ProductoPedido
 from productos.models import Producto
+from usuarios.decorators.corv_required import corv_required
+from django.contrib.auth.decorators import login_required
 
 class pedidoVendedor:
     def __init__(self, productos, idPedido, total):
@@ -9,6 +11,8 @@ class pedidoVendedor:
         self.idPedido = idPedido
         self.total = total
 
+@login_required()
+@corv_required()
 def pedidos(request):
 
         # return render (request, "pedidos.html")

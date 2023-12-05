@@ -10,13 +10,20 @@ from carrito.models import Carrito
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
+from usuarios.decorators.vendedor_required import vendedorrole_required
+from usuarios.decorators.cliente_required import clienterole_required
+from usuarios.decorators.clienteornone_required import clienteornone_required
+from django.contrib.auth.decorators import login_required
 
+@clienteornone_required()
 def alimentos(request): 
     all_products = Producto.objects.order_by("stock")
     return render(request,"productos/index.html",{
         'all_products': all_products
     })
 
+@login_required()
+@clienterole_required()
 @csrf_exempt
 def add_cart(request):
     pk = request.POST['product']
@@ -36,6 +43,8 @@ def add_cart(request):
     cart_product.save()
     return HttpResponse(status=200)
 
+@login_required()
+@vendedorrole_required()
 def crear(request):
     if request.POST:
         form = CrearProductoForm(request.POST, request.FILES)
@@ -64,6 +73,7 @@ def crear(request):
         categorias = Categoria.objects.all()
         return render(request, 'productos/crearproductoform.html', {'form': form, 'categorias':categorias})
 
+@clienteornone_required()
 def productodetalle(request, id):
     producto = Producto.objects.get(pk=id)
     if producto is not None:
