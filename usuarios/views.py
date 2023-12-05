@@ -1,6 +1,8 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
+from usuarios.forms import CrearDireccionForm
 from .models import CustomUser
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
@@ -205,7 +207,12 @@ def iniciarsesion(request):
         else:
             if check_password(request.POST['password'], usuario.password):
                 login(request, usuario)
-                return redirect('/productos')
+                if(request.user.role=="cliente"):
+                    return redirect('/productos')
+                elif(request.user.role=="vendedor"):
+                    return redirect('/usuarios/vendedor')
+                else:
+                    return redirect('/usuarios/admin')
             else:
                 return render(request, 'iniciarsesion.html', {
                     'form': AuthenticationForm,

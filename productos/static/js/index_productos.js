@@ -85,6 +85,16 @@ function go_to_home(){
     location.href=url;
 }
 
+function go_to_direcciones(){
+    var url = $("#btn_direcciones").attr("data-url");
+    location.href=url;
+}
+
+function go_to_pedidos(){
+    var url = $("#btn_pedidos").attr("data-url");
+    location.href=url;
+}
+
 $(function(){
     filterProductsByType(window.location.search.substring(1));
 

@@ -11,5 +11,5 @@ class Producto(models.Model):
       stock = models.IntegerField(null=True, validators=[MinValueValidator(limit_value=0)])
       idVendedor = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
       tipo = models.CharField(max_length=100)
-      imagen = models.ImageField(upload_to='productos/files/imagenesProductos')
+      imagen = models.ImageField(upload_to='media/files/productos')
       

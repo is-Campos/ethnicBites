@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-from django.http import Http404
-=======
 from django.http import Http404, HttpResponse
->>>>>>> remote/master
 from django.shortcuts import redirect, render
 from django.views import generic
 from .forms import CrearProductoForm
 from .models import Producto
 
-<<<<<<< HEAD
-
-class IndexView(generic.TemplateView):
-    template_name = "productos/index.html"
-
-=======
 from categorias.models import Categoria,CategoriaDetalle
 from carrito.models import CarritoDetalle
 from carrito.models import Carrito
@@ -45,7 +35,6 @@ def add_cart(request):
         cart_product = CarritoDetalle.objects.create(idCarrito=carrito, idProducto=producto, cantidad=quantity)    
     cart_product.save()
     return HttpResponse(status=200)
->>>>>>> remote/master
 
 def crear(request):
     if request.POST:
@@ -59,9 +48,6 @@ def crear(request):
             nuevoproducto = Producto.objects.create(nombre=request.POST['nombre'], descripcion=request.POST['descripcion'], precio=request.POST[
                                                     'precio'], stock=stock, idVendedor=request.user, tipo=request.POST['tipo'], imagen=request.FILES['imagen'])
             nuevoproducto.save()
-<<<<<<< HEAD
-            return redirect('/productos')
-=======
             categoriasSeleccionadasForm = request.POST.getlist('categorias')
             categorias_a_agregar = [int(categoria_id) for categoria_id in categoriasSeleccionadasForm]
 
@@ -70,18 +56,13 @@ def crear(request):
                 CategoriaDetalle.objects.create(idProducto=nuevoproducto, idCategoria=categoria_instance)
 
             return redirect('usuarios:vendedorHome')
->>>>>>> remote/master
         else:
             return render(request, 'productos/crearproductoform.html', {'form': form, 'error': 'Verifica que todos los campos sean correctos'})
 
     else:
         form = CrearProductoForm(request.POST, request.FILES)
-<<<<<<< HEAD
-        return render(request, 'productos/crearproductoform.html', {'form': form})
-=======
         categorias = Categoria.objects.all()
         return render(request, 'productos/crearproductoform.html', {'form': form, 'categorias':categorias})
->>>>>>> remote/master
 
 def productodetalle(request, id):
     producto = Producto.objects.get(pk=id)

@@ -17,7 +17,7 @@ class Payments(TestCase):
             )
         self.client.login(username='vendedor_test', password='password123')
 
-        imagen = open("productos/files/imagenesProductos/sushi.png",'rb') 
+        imagen = open("media/files/productos/sushi.png",'rb') 
         self.client.post(reverse('productos:crear'), {
             'nombre': 'Producto de Prueba',
             'descripcion': 'Descripción de prueba',
@@ -29,7 +29,7 @@ class Payments(TestCase):
         })
 
         producto_creado = Producto.objects.filter(nombre='Producto de Prueba').first()
-        imagen = open("productos/files/imagenesProductos/sushi.png",'rb') 
+        imagen = open("media/files/productos/sushi.png",'rb') 
         self.client.post(reverse('productos:crear'), {
             'nombre': 'Producto de Prueba2',
             'descripcion': 'Descripción de prueba2',
@@ -84,7 +84,7 @@ class Payments(TestCase):
             )
         self.client.login(username='vendedor_test', password='password123')
 
-        imagen = open("productos/files/imagenesProductos/sushi.png",'rb') 
+        imagen = open("media/files/productos/sushi.png",'rb') 
         self.client.post(reverse('productos:crear'), {
             'nombre': 'Producto de Prueba',
             'descripcion': 'Descripción de prueba',
@@ -96,7 +96,7 @@ class Payments(TestCase):
         })
 
         producto_creado = Producto.objects.filter(nombre='Producto de Prueba').first()
-        imagen = open("productos/files/imagenesProductos/sushi.png",'rb') 
+        imagen = open("media/files/productos/sushi.png",'rb') 
         self.client.post(reverse('productos:crear'), {
             'nombre': 'Producto de Prueba2',
             'descripcion': 'Descripción de prueba2',

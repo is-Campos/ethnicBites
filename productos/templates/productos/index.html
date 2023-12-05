@@ -1,62 +1,12 @@
-<<<<<<< HEAD
-{% load static %}
-=======
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
->>>>>>> remote/master
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>HomePage</title>
-<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
-</head>
-<body>
-    <header>
-        <h1>ETHNIC BITES</h1>
-        <nav>
-            <button>Iniciar Sesión</button>
-            <button>Regístrate</button>
-        </nav>
-    </header>
-    <aside>
-        <nav>
-            <ul>
-                <li>Inicio</li>
-                <li>Alimentos</li>
-                <li>Kits de comida</li>
-                <li>Ingredientes</li>
-                <li>Carrito</li>
-                <li>Direcciones</li>
-            </ul>
-        </nav>
-    </aside>
-    <main>
-        <section class="hero">
-            <h2>Experimenta la gran diversidad</h2>
-            <div class="cards">
-                <article>
-                    <h3>Atrévete a probar nuevas cosas</h3>
-                    <p>Ordena lo que gustes entre los diferentes tipos de comida.</p>
-                </article>
-                <article>
-                    <h3>Prepara tu propia comida</h3>
-                    <p>Si te gusta hacer tu propia comida, ordena tu kit personalizado.</p>
-                </article>
-                <article>
-                    <h3>Prueba nuevos ingredientes</h3>
-                    <p>Experimenta y usa nuevos ingredientes de diferentes lugares.</p>
-                </article>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
-=======
     <title>Productos</title>
     <link rel="stylesheet" href="{% static 'css/index_productos.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -78,7 +28,8 @@
                         <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('kit')">Kits de comida</button>
                         <button type="button" class="list-group-item list-group-item-action product-category-button" onclick="filterProductsByType('ingrediente')">Ingredientes</button>
                         <button type="button" id="btn_carrito" data-url="{% url 'carrito:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_cart()">Carrito</button>
-                        <button type="button" class="list-group-item list-group-item-action product-category-button">Direcciones</button>
+                        <button type="button" id="btn_direcciones" data-url="{% url 'usuarios:direccion' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_direcciones()">Direcciones</button>
+                        <button type="button" id="btn_pedidos" data-url="{% url 'pedidos:pedidos' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_pedidos()">Pedidos</button>
                       </div>
                 </div>
                 <div class="two">
@@ -167,4 +118,3 @@
 </html>
 
 {% endblock %}
->>>>>>> remote/master

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,17 +32,3 @@
 </body>
 </html>
 {% endblock content %}
-=======
-<h1>Registro</h1>
-<form method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <p>
-    {{error}}
-  </p>
-  <button>
-    Registro
-  </button>
-</form>
-{% endblock %}
->>>>>>> remote/master
