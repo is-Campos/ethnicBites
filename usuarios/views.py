@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from usuarios.forms import CrearDireccionForm
 from .models import CustomUser, Direccion
+from .models import CustomUser
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password

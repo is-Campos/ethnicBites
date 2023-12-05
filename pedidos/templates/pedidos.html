@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="{% static 'css/pedidos.css' %}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
     <script src="{% static 'js/pedidos.js' %}"></script>
@@ -22,7 +23,7 @@
                         <button type="button" class="list-group-item list-group-item-action product-category-button" aria-current="true">
                           Inicio
                         </button>
-                        <button type="button" id="btn_home" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_home()">Todos los productos</button>
+                        <button type="button" id="btn_producto" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_producto()">Todos los productos</button>
                         <button type="button" id="btn_alimento" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_alimento()">Alimentos</button>
                         <button type="button" id="btn_kit" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_kit()">Kits de comida</button>
                         <button type="button" id="btn_ingrediente" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_ingrediente()">Ingredientes</button>
