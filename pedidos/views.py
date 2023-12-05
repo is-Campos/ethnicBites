@@ -69,11 +69,3 @@ def pedidos(request):
 
           lista_pedidosVendedor = getPedidosVendedor()
           return render (request, "pedidos.html", {'lista_pedidos_vendedor': lista_pedidosVendedor, 'error': "Aún no tienes pedidos", 'template':"vendedor"})
-
-
-def pedidoDetalle(request, id):
-    pedido = Pedido.objects.get(pk=id)
-    if pedido is not None:
-        return render(request, 'productos/productodetalle.html', {'pedido':pedido})
-    else:
-        raise Http404('No pudimos encontrar la página que buscas')
