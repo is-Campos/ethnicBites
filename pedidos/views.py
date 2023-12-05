@@ -2,6 +2,8 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from .models import Pedido, ProductoPedido
 from productos.models import Producto
+from usuarios.decorators.corv_required import corv_required
+from django.contrib.auth.decorators import login_required
 
 class pedidoVendedor:
     def __init__(self, productos, idPedido, total):
@@ -9,6 +11,8 @@ class pedidoVendedor:
         self.idPedido = idPedido
         self.total = total
 
+@login_required()
+@corv_required()
 def pedidos(request):
 
         # return render (request, "pedidos.html")
@@ -69,11 +73,3 @@ def pedidos(request):
 
           lista_pedidosVendedor = getPedidosVendedor()
           return render (request, "pedidos.html", {'lista_pedidos_vendedor': lista_pedidosVendedor, 'error': "Aún no tienes pedidos", 'template':"vendedor"})
-
-
-def pedidoDetalle(request, id):
-    pedido = Pedido.objects.get(pk=id)
-    if pedido is not None:
-        return render(request, 'productos/productodetalle.html', {'pedido':pedido})
-    else:
-        raise Http404('No pudimos encontrar la página que buscas')

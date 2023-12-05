@@ -21,7 +21,7 @@ class Products(TestCase):
             role='vendedor'
         )
         self.client.login(username='vendedor_test', password='password123')
-        imagen = open("productos/files/imagenesProductos/sushi.png",'rb') 
+        imagen = open("media/files/productos/sushi.png",'rb') 
         response = self.client.post(reverse('productos:crear'), {
             'nombre': 'Producto de Prueba',
             'descripcion': 'Descripción de prueba',
@@ -51,7 +51,7 @@ class Products(TestCase):
             role='vendedor'
         )
         self.client.login(username='vendedor_test', password='password123')
-        imagen = open("productos/files/imagenesProductos/sushi.png",'rb') 
+        imagen = open("media/files/productos/sushi.png",'rb') 
         response = self.client.post(reverse('productos:crear'), {
             'nombre': 'Producto de Prueba',
             'descripcion': 'Descripción de prueba',

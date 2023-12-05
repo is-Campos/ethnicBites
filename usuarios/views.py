@@ -1,7 +1,9 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser
+
+from usuarios.forms import CrearDireccionForm
+from .models import CustomUser, Direccion
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
@@ -9,14 +11,25 @@ from django.contrib.auth.hashers import make_password
 from productos.models import Producto
 from categorias.models import CategoriaDetalle, Categoria
 from .decorators.admin_required import adminrole_required
+from .decorators.vendedor_required import vendedorrole_required
+from .decorators.cliente_required import clienterole_required
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
 
 def registro(request):
-
     if request.method == 'GET':
-        return render(request, 'registro.html', {
+        if request.user is not None:
+            if request.user.role=="admin":
+                return redirect('usuarios:adminHome')
+            elif request.user.role=="vendedor":
+                return redirect('usuarios:vendedorHome')
+            elif request.user.role=="cliente":
+                return redirect('productos:index')
+        else:
+            return render(request, 'registro.html', {
             'form': UserCreationForm
         })
     else:
@@ -40,36 +53,12 @@ def registro(request):
             'error': 'Las contraseñas no coinciden'
         })
 
-
+@login_required
 def cerrarsesion(request):
     logout(request)
     return redirect('/productos')
 
-
-def iniciarsesion(request):
-    if request.method == 'GET':
-        return render(request, 'iniciarsesion.html', {
-            'form': AuthenticationForm
-        })
-    else:
-        usuario = authenticate(
-            request, username=request.POST['username'], password=request.POST['password'])
-        if usuario is None:
-            return render(request, 'iniciarsesion.html', {
-                'form': AuthenticationForm,
-                'error': 'El usuario o contraseña es incorrecto'
-            })
-        else:
-            # Use check_password to verify the password
-            if check_password(request.POST['password'], usuario.password):
-                login(request, usuario)
-                return redirect('/productos')
-            else:
-                return render(request, 'iniciarsesion.html', {
-                    'form': AuthenticationForm,
-                    'error': 'El usuario o contraseña es incorrecto'
-                })
-            
+@login_required()            
 @adminrole_required()
 def adminHome(request):
     if request.method == "GET":
@@ -96,14 +85,18 @@ def adminHome(request):
         return render(request, 'adminHome.html', {
             'error': 'Las contraseñas no coinciden'
         })
-    
+
+@login_required()    
+@vendedorrole_required()
 def vendedorHome(request):
     if request.method=="GET":
         lista_alimentos = Producto.objects.filter(idVendedor=request.user.id, tipo="alimento")
         lista_kits = Producto.objects.filter(idVendedor=request.user.id, tipo="kit")
         lista_ingredientes = Producto.objects.filter(idVendedor=request.user.id, tipo="ingrediente")
         return render(request, 'vendedorHome.html', {'listaAlimentos': lista_alimentos, 'listaKits':lista_kits, 'listaIngredientes':lista_ingredientes})
-    
+
+@login_required()
+@vendedorrole_required()    
 def modificarProducto(request,pk):
     if request.method == "GET":
         producto = Producto.objects.get(pk=pk)
@@ -151,39 +144,15 @@ def modificarProducto(request,pk):
         else:
             return render(request, 'modificarProducto.html', {'producto':None, 'error':"No se pudo completar la solicitud"})
 
+@login_required
+@vendedorrole_required()
 def deleteProduct(request,pk):
     producto = get_object_or_404(Producto, pk=pk)
     producto.delete()
     return redirect('usuarios:vendedorHome')
 
-def registro(request):
 
-    if request.method == 'GET':
-        return render(request, 'registro.html', {
-            'form': UserCreationForm
-        })
-    else:
-        if request.POST['password1'] == request.POST['password2']:
-            try:
-                nuevoUsuario = CustomUser.objects.create(
-                    username=request.POST['username'],
-                    password=make_password(request.POST['password1']),
-                    role="cliente"
-                    )
-                nuevoUsuario.save()
-                login(request, nuevoUsuario)
-                return redirect('/productos')
-            except IntegrityError:
-                return render(request, 'registro.html', {
-                    'form': UserCreationForm,
-                    'error': 'El usuario ya existe'
-                })
-        return render(request, 'registro.html', {
-            'form': UserCreationForm,
-            'error': 'Las contraseñas no coinciden'
-        })
-
-
+@login_required()
 def cerrarsesion(request):
     logout(request)
     return redirect('/productos')
@@ -191,7 +160,15 @@ def cerrarsesion(request):
 
 def iniciarsesion(request):
     if request.method == 'GET':
-        return render(request, 'iniciarsesion.html', {
+        if request.user.is_authenticated:
+            if request.user.role=="admin":
+                return redirect('usuarios:adminHome')
+            elif request.user.role=="vendedor":
+                return redirect('usuarios:vendedorHome')
+            elif request.user.role=="cliente":
+                return redirect('productos:index')
+        else:
+            return render(request, 'iniciarsesion.html', {
             'form': AuthenticationForm
         })
     else:
@@ -205,13 +182,20 @@ def iniciarsesion(request):
         else:
             if check_password(request.POST['password'], usuario.password):
                 login(request, usuario)
-                return redirect('/productos')
+                if(request.user.role=="cliente"):
+                    return redirect('/productos')
+                elif(request.user.role=="vendedor"):
+                    return redirect('/usuarios/vendedor')
+                else:
+                    return redirect('/usuarios/admin')
             else:
                 return render(request, 'iniciarsesion.html', {
                     'form': AuthenticationForm,
                     'error': 'El usuario o contraseña es incorrecto'
                 })
 
+@login_required()
+@clienterole_required()
 def direccion(request):
     direccion_usuario = None 
 
