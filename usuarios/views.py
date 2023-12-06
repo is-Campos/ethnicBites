@@ -22,7 +22,7 @@ from django.contrib.auth.decorators import login_required
 
 def registro(request):
     if request.method == 'GET':
-        if request.user is not None:
+        if request.user.is_authenticated:
             if request.user.role=="admin":
                 return redirect('usuarios:adminHome')
             elif request.user.role=="vendedor":

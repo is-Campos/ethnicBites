@@ -1,30 +1,29 @@
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 125vh;
+    align-items: flex-start;
+    height: 100%;
 }
 
 .form-container {
     background-color: #9D213A;
     color: white;
     width: 50%;
-    padding: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.form-container h1 {
+    margin-left: 20px;
+    padding-top: 1em;
+    height: min-content;
+    justify-content: flex-start;
     text-align: center;
-    font-size: 40px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 4.5vw;
+    margin-bottom: 2vw;
 }
 
-form {
-    margin-top: 30px;
+.ethnic-form{
+    margin-top: 1rem;
 }
 
 .form-container input,
@@ -42,6 +41,7 @@ form {
     border-radius: 20px !important;
     background-color: #9DAB72 !important;
     color: #ffffff !important;
+    border-color: #9DAB72 !important;
     width: 150px; 
     height: 50px;
     display: block; 
@@ -55,9 +55,17 @@ form {
     justify-content: flex-end; 
     align-items: flex-start; 
     padding: 20px; 
+    height: 103%;
+    padding-top: 2.2em;
 }
 
 .image-container img {
-    width: 400px;
-    height: auto;
+    width: 245px;
+    padding-top: 1em;
 }
+
+.ethnic{
+    background-color: #d5ca98;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+  }

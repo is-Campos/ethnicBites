@@ -2,31 +2,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .form-container {
     background-color: #9D213A;
     color: white;
     width: 50%;
-    padding: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 20px;
-}
-
-
-.form-container h1 {
+    padding-top: 0em;
+    height: 82%;
+    justify-content: center;
     text-align: center;
-    font-size: 40px;
-    margin-bottom: 20px;
-    margin-top: 20px;
 }
 
-form {
-    margin-top: 30px;
+.ethnic-form{
+    margin-top: 1rem;
 }
 
 .form-container input,
@@ -35,20 +31,20 @@ form {
 .form-container select {
     width: 100%;
     box-sizing: border-box;
-    font-size: 25px;
-    margin-bottom: 30px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
 .form-container button {
     margin: 0px 2px;
     border-radius: 20px !important;
     background-color: #9DAB72 !important;
+    border-color: #9DAB72 !important;
     color: #ffffff !important;
     width: 150px;
     height: 50px;
     display: block;
     margin: 0 auto;
-    margin-bottom: 25px;
 }
 
 .image-container {
@@ -56,9 +52,18 @@ form {
     justify-content: flex-end; 
     align-items: flex-start; 
     padding: 20px; 
+    height: 103%;
+    padding-top: 2.2em;
 }
 
 .image-container img {
     width: 245px;
-    height: auto;
+    height: 93%;
+    padding-top: 1em;
 }
+
+.ethnic{
+    background-color: #d5ca98;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+  }

@@ -14,9 +14,8 @@
   padding: 1em;
   margin-right: 1em;
   margin-left: 1em;
-  background-color: #A62648;
+  background-color: #c72546;;
   text-align: center;  
-  width: 20%;
 }
 
 li{
@@ -41,8 +40,8 @@ li{
 }
 
 #imgproducto{
+  height: 100%;
   object-fit: cover;
-  height: 60%;
 }
 
 a{
@@ -58,25 +57,15 @@ a:hover{
   flex: 1;
   padding: 1em;
   margin-right: 1em;
-  background-color: #A62648;
-  max-width: 40%;
+  background-color: #c72546;;
 }
 
 .ethnic{
-  background-color: #FFFCF1;
+  background-color: #d5ca98;
   height: 100%;
+  font-family: 'Arial', sans-serif;
 }
 
-
-#productcard {
-  min-width: 100%;
-  max-height: 300px;
-}
-
-#productcard2 {
-  min-width: 100%;
-  height: 100%;
-}
 
 #selectedItemMenu{
   color: #B5BF63;
@@ -105,4 +94,20 @@ li h3{
 
 h4{
   font-size: 1rem;
+}
+
+.imgproductocontainer{
+  min-height: 100%;
+}
+.menu-index{
+  margin-top: 1em;
+}
+
+.menu-text{
+  font-weight: bolder;
+}
+.product-category-button{
+  background-color: transparent;
+  color:white;
+  text-align: left;
 }

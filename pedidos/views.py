@@ -17,7 +17,7 @@ def pedidos(request):
 
         # return render (request, "pedidos.html")
         if request.user.role=="cliente":
-          lista_pedidos_cliente = Pedido.objects.filter(idCliente=request.user.id).values_list('id', flat=True)
+          lista_pedidos_cliente = Pedido.objects.filter(idCliente=request.user.id).order_by('-fecha').values_list('id', flat=True)
           lista_productospedidos_cliente = ProductoPedido.objects.filter(idPedido__in=lista_pedidos_cliente)
 
           listapedidos=[]
@@ -44,7 +44,7 @@ def pedidos(request):
           return render (request, "pedidos.html", {'lista_pedidos': listapedidoscliente, 'error': "Aún no tienes pedidos", 'template':"cliente"})
         else:
           lista_idsproductos_vendedor = Producto.objects.filter(idVendedor=request.user.id).values_list('id', flat=True)
-          lista_productosPedidosVendedor = ProductoPedido.objects.filter(idProducto__in=lista_idsproductos_vendedor)
+          lista_productosPedidosVendedor = ProductoPedido.objects.filter(idProducto__in=lista_idsproductos_vendedor).order_by('-idPedido__fecha')
 
           
           def getPedidosVendedor():

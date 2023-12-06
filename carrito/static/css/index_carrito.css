@@ -173,3 +173,15 @@
   display: flex;
   justify-content: center;
 }
+
+.button-container{
+  align-items: flex-start;
+  display: flex;
+}
+
+.header-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-right: 2vw;
+}

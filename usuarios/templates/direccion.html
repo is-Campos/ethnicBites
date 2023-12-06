@@ -6,22 +6,59 @@
 <head>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/direccion.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{% static 'js/direccion.js' %}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if direccion_usuario %}Editar tu{% else %}Ingresa tu{% endif %} dirección</title>
     {% load bootstrap5 %}
     {% bootstrap_css %}
 </head>
-<div class="container">
-    <div class="address-form">
-        <form method="POST">
-            <h1>{% if direccion_usuario %}Editar tu{% else %}Ingresa tu{% endif %} dirección</h1>
-            {% csrf_token %}
-            {{ form.as_p }}
-            {{ error }}
-            <button>Guardar</button>
-        </form>
-    </div>
-</div>
+<body class="ethnic">
+<main> 
+    <section class="box">
+            <div class="one">
+                <span class="menu-text">Dirección guardada</span>
+                <div>
+                    <div class=box-direccion>
+                        {% if direccion_usuario %}
+                            <p>{{direccion_usuario.nombreCompleto}}</p>
+                            {{direccion_usuario.calle}} #{{direccion_usuario.numeroExterior}}
+                            <p>{{direccion_usuario.codigoPostal}}</p>                 
+                        {% else %}
+                            <p>No hay dirección guardada</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="menu-text">Menú</span>
+                <div class="list-group menu-index">
+                    <button type="button" class="list-group-item list-group-item-action product-category-button" aria-current="true">
+                      Inicio
+                    </button>
+                    <button type="button" id="btn_producto" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_producto()">Todos los productos</button>
+                    <button type="button" id="btn_alimento" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_alimento()">Alimentos</button>
+                    <button type="button" id="btn_kit" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_kit()">Kits de comida</button>
+                    <button type="button" id="btn_ingrediente" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_ingrediente()">Ingredientes</button>
+                    <button type="button" id="btn_carrito" data-url="{% url 'carrito:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_cart()">Carrito</button>
+                    <button type="button" id="btn_direcciones" class="list-group-item list-group-item-action product-category-button">Direcciones</button>
+                    <button type="button" id="btn_pedidos" data-url="{% url 'pedidos:pedidos' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_pedidos()">Pedidos</button>
+                  </div>
+            </div>
+            <div class="two">
+                <div class="container">
+                    <div class="address-form">
+                        <form method="POST">
+                            <h1>{% if direccion_usuario %}Editar tu{% else %}Ingresa tu{% endif %} dirección</h1>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {{ error }}
+                            <button>Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
 {% endblock content %}

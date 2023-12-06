@@ -14,7 +14,7 @@
   padding: 1em;
   margin-right: 1em;
   margin-left: 1em;
-  background-color: #A62648;
+  background-color: #c72546;
   text-align: center;  
 }
   
@@ -22,13 +22,14 @@
   flex: 1;
   padding: 1em;
   margin-right: 1em;
-  background-color: #A62648;
+  background-color: #c72546;
 
 }
 
 .ethnic{
   background-color: #FFFCF1;
   height: 100%;
+  font-family: 'Arial', sans-serif;
 }
 
 #btnregistrar{
@@ -66,4 +67,28 @@
 
 .pedidostext{
   margin-bottom: 1rem;
+}
+
+.product-category-button{
+  background-color: transparent;
+  color:white;
+  text-align: left;
+}
+
+.menu-products{
+  margin-top: 1em;
+}
+
+.menu-text{
+  font-weight: bolder;
+}
+
+.ethnic{
+  background-color: #d5ca98;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.menu-index{
+  margin-top: 1em;
 }

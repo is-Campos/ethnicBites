@@ -21,7 +21,7 @@
                     Agregar Vendedor
                 </div>
                 <div class="two">
-                    <p>Agregar nuevo vendedor</p>
+                    <p class="ethnic-p">Agregar nuevo vendedor</p>
                     <form method="POST">
                       {% csrf_token %}
                         <div class="mb-3">
@@ -44,7 +44,9 @@
                           <label for="password2" class="form-label">Confirmar contraseña</label>
                           <input type="password" class="form-control" id="password2" name="password2">
                         </div>
+                        <div class="btn-container">
                         <button id="btnregistrar"class="btn btn-primary">Registrar Vendedor</button>
+                        </div>
                       </form>
                       <p>
                         {{ error }}

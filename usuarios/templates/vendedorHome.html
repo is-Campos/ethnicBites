@@ -8,34 +8,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendedor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/vendedor.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/vendedorHome.css' %}">
 
-<link rel="stylesheet" href="{% static 'css/vendedorHome.css' %}">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body class="ethnic">
     <main> 
         <section class="box">
                 <div class="one">
-                    <ul>
-                      <li>
-                        <h3>Panel de Vendedor</h3>
-                      </li>
-                      <li>
-                        <a href="{% url 'usuarios:vendedorHome' %}" id="selectedItemMenu">
-                          Inventario
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{% url 'productos:crear' %}">
-                          Agregar nuevo producto
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{% url 'pedidos:pedidos' %}">
-                          Pedidos
-                        </a>
-                      </li>
-                    </ul>
+                  <span class="menu-text">Panel de Vendedor</span>   
+                  <div class="list-group menu-index">
+                    <button type="button" id="btn_vendedor_home" class="list-group-item list-group-item-action product-category-button">Inventario</button>
+                    <button type="button" id="btn_crear_producto" data-url="{% url 'productos:crear' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_crear_productos()">Agregar nuevo producto</button>
+                    <button type="button" id="btn_pedidos" data-url="{% url 'pedidos:pedidos' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_pedidos()">Pedidos</button>
+                  </div>
                 </div>
                 <div class="two">
                   {% if not listaAlimentos and not listaKits and not listaIngredientes %}
@@ -49,9 +37,9 @@
                       <h4>No has registrado alimentos aún</h4>
                     {% else %}
                       {% for producto in listaAlimentos %}
-                      <div class="card mb-3" style="max-width: 540px;" id="productcard">
-                        <div class="row g-0" id="productcard2">
-                          <div class="col-md-4">
+                      <div class="card mb-3" style="max-width: 100%">
+                        <div class="row g-0">
+                          <div class="col-md-4 imgproductocontainer">
                             <img src="{{ producto.imagen}}" id="imgproducto" class="img-fluid rounded-start" alt="{{producto.nombre}}" {{producto.nombre}}>
                           </div>
                           <div class="col-md-8">
@@ -77,13 +65,13 @@
                         <h4>No has registrado kits aún</h4>
                     {% else %}
                       {% for producto in listaKits %}
-                      <div class="card mb-3" style="max-width: 540px;" id="productcard">
-                        <div class="row g-0" id="productcard2">
-                          <div class="col-md-4">
+                      <div class="card mb-3 h-100" style="max-width: 100%">
+                        <div class="row g-0">
+                          <div class="col-md-4 imgpedidocontainer">
                             <img src="{{ producto.imagen}}" id="imgproducto" class="img-fluid rounded-start" alt="{{producto.nombre}}" {{producto.nombre}}>
                           </div>
-                          <div class="col-md-8">
-                            <div class="card-body">
+                          <div class="col-md-8 d-flex flex-column">
+                            <div class="card-body" id="cardtext">
                               <h5 class="card-title textcard">{{producto.nombre}}</h5>
                               <p class="card-text textcard">{{producto.descripcion}}</p>
                               <div>
@@ -105,9 +93,9 @@
                         <h4>No has registrado ingredientes aún</h4>
                     {% else %}
                       {% for producto in listaIngredientes %}
-                      <div class="card mb-3" style="max-width: 540px;" id="productcard">
-                        <div class="row g-0" id="productcard2">
-                          <div class="col-md-4">
+                      <div class="card mb-3" style="max-width: 100%">
+                        <div class="row g-0">
+                          <div class="col-md-4 imgproductocontainer">
                             <img src="{{ producto.imagen}}" id="imgproducto" class="img-fluid rounded-start" alt="{{producto.nombre}}" {{producto.nombre}}>
                           </div>
                           <div class="col-md-8">

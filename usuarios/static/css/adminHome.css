@@ -1,6 +1,6 @@
 .box {
   display: flex;
-  margin-top: 14em;
+  margin-top: 1vw;
   color: white;
   display: flex;
   margin-bottom: 1em;
@@ -10,11 +10,11 @@
 
   
 .one {
-  flex: 0 auto;
+  flex: 0.1 auto;
   padding: 1em;
   margin-right: 1em;
   margin-left: 1em;
-  background-color: #A62648;
+  background-color: #c72546;;
   text-align: center;  
   width: 10%;
 }
@@ -23,13 +23,23 @@
   flex: 1;
   padding: 1em;
   margin-right: 1em;
-  background-color: #A62648;
+  background-color: #c72546;;
   max-width: 40%;
 }
 
 .ethnic{
-  background-color: #FFFCF1;
+  background-color: #d5ca98;
   height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.ethnic-p{
+  text-align: center;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: center;
 }
 
 #btnregistrar{

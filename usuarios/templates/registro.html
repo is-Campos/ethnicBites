@@ -10,14 +10,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro</title>
 </head>
-<body>
+<body class="ethnic">
   <div class="container">
     <div class="image-container">
       <img src="{% static 'imgs/banner2.png' %}">
     </div>
     <div class="form-container">
-      <h1>¡Unite y experimenta el sabor!</h1>
-      <form method="POST">
+      <h2>¡Únete y experimenta el sabor!</h2>
+      <form method="POST" class="ethnic-form">
         {% csrf_token %}
         {{form.as_p}}
         <p>

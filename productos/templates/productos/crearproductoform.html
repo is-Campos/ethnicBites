@@ -6,25 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear Producto</title>
     <link rel="stylesheet" href="{% static 'css/crearproductoform.css' %}" />
+    <script src="{% static 'js/vendedor_producto.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body class="ethnic">
     <main>
       <section class="box">
         <div class="one">
-          <ul>
-            <li>
-              <h3>Panel de Vendedor</h3>
-            </li>
-            <li>
-              <a href="{% url 'usuarios:vendedorHome' %}"> Inventario </a>
-            </li>
-            <li>
-              <a href="{% url 'productos:crear' %}" id="selectedItemMenu">
-                Agregar nuevo producto
-              </a>
-            </li>
-          </ul>
+          <span class="menu-text">Panel de Vendedor</span>   
+          <div class="list-group menu-index">
+            <button type="button" id="btn_vendedor_home" data-url="{% url 'usuarios:vendedorHome' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_vendedor_home()">Inventario</button>
+            <button type="button" id="btn_crear_producto" class="list-group-item list-group-item-action product-category-button">Agregar nuevo producto</button>
+            <button type="button" id="btn_pedidos" data-url="{% url 'pedidos:pedidos' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_pedidos()">Pedidos</button>
+          </div>
         </div>
         <div class="two">
           <h1>Crear nuevo producto</h1>

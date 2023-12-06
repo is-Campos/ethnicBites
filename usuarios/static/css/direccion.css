@@ -2,20 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh;
 }
 
 .address-form {
-    background-color: #9D213A;
+    background-color: #c72546;;
     color: white;
-    width: 40%;
+    width: 80%;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 10px;
-    margin-top: 140vh;
 }
 
 .address-form h1{
@@ -23,6 +21,25 @@
     font-size: 24px;
     margin-bottom: 30px;
     margin-top: 20PX;
+}
+
+.saved-addresses {
+    background-color: #c72546;;
+    color: white;
+    width: 80%;
+    height: 600px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.saved-addresses h1{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
 }
 
 .address-form button {
@@ -41,10 +58,6 @@
     margin-top: 30px;
 }
 
-form {
-    margin-top: 30px;
-}
-
 .address-form input {
     width: 100%;
     box-sizing: border-box;
@@ -58,26 +71,6 @@ form {
     text-align: center;
     font-size: 30px;
     margin-bottom: 30px;
-    margin-top: 30px;
-}
-
-.saved-addresses {
-    background-color: #9D213A;
-    color: white;
-    width: 30%;
-    height: 600px;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    margin-top: 64vh;
-}
-
-.saved-addresses h1{
-    text-align: center;
-    font-size: 30px;
     margin-top: 30px;
 }
 
@@ -103,3 +96,58 @@ form {
 .card-text {
     font-size: 16px; 
 }
+
+.ethnic{
+    background-color: #d5ca98;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .box {
+    display: flex;
+    margin-top: 1em;
+    color: white;
+    margin-bottom: 1em;
+    }
+    
+  .one {
+    flex: 0 auto;
+    padding: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    background-color: #c72546;
+    text-align: center;  
+  }
+    
+.two {
+    flex: 1;
+    padding: 1em;
+    margin-right: 1em;
+    background-color: #c72546;
+}
+
+.menu-index{
+    margin-top: 1em;
+}
+
+.product-category-button{
+    background-color: transparent !important;
+    color:white !important;
+    text-align: left !important;
+}
+  
+.menu-products{
+    margin-top: 1em;
+}
+  
+.menu-text{
+    font-weight: bolder;
+}
+
+.box-direccion{
+    background-color: white;
+    color: #000;
+    margin-top: 1em;
+    border-radius: 1em;
+}
+  

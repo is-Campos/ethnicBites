@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="{% static 'css/pedidos.css' %}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
     <script src="{% static 'js/pedidos.js' %}"></script>
@@ -17,25 +16,39 @@
   <body class="ethnic">
     <main>
       <section class="box">
-        <div class="one">Pedidos
-          <span class="menu-text">Menú</span>
-                    <div class="list-group menu-index">
-                        <button type="button" class="list-group-item list-group-item-action product-category-button" aria-current="true">
-                          Inicio
-                        </button>
-                        <button type="button" id="btn_producto" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_producto()">Todos los productos</button>
-                        <button type="button" id="btn_alimento" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_alimento()">Alimentos</button>
-                        <button type="button" id="btn_kit" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_kit()">Kits de comida</button>
-                        <button type="button" id="btn_ingrediente" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_ingrediente()">Ingredientes</button>
-                        <button type="button" id="btn_carrito" data-url="{% url 'carrito:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_cart()">Carrito</button>
-                        <button type="button" id="btn_direcciones" data-url="{% url 'usuarios:direccion' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_direcciones()">Direcciones</button>
-                        <button type="button" id="btn_pedidos" data-url="{% url 'pedidos:pedidos' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_pedidos()">Pedidos</button>
-                      </div>
+        <div class="one">
+
+
+
+          {% if template == "cliente" %}
+          <span class="menu-text">Pedidos</span>
+          <div class="list-group menu-index">
+              <button type="button" id="btn_home" data-url="{% url 'home' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_home()" aria-current="true">
+                Inicio
+              </button>
+              <button type="button" id="btn_producto" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_producto()">Todos los productos</button>
+              <button type="button" id="btn_alimento" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_alimento()">Alimentos</button>
+              <button type="button" id="btn_kit" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_kit()">Kits de comida</button>
+              <button type="button" id="btn_ingrediente" data-url="{% url 'productos:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_ingrediente()">Ingredientes</button>
+              <button type="button" id="btn_carrito" data-url="{% url 'carrito:index' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_cart()">Carrito</button>
+              <button type="button" id="btn_direcciones" data-url="{% url 'usuarios:direccion' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_direcciones()">Direcciones</button>
+              <button type="button" id="btn_pedidos" class="list-group-item list-group-item-action product-category-button">Pedidos</button>
+            </div>
+            {% else %}
+
+          <span class="menu-text">Panel de Vendedor</span>
+         
+          <div class="list-group menu-index">
+            <button type="button" id="btn_vendedor_home" data-url="{% url 'usuarios:vendedorHome' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_vendedor_home()">Inventario</button>
+            <button type="button" id="btn_crear_producto" data-url="{% url 'productos:crear' %}" class="list-group-item list-group-item-action product-category-button" onclick="go_to_crear_productos()">Agregar nuevo producto</button>
+            <button type="button" id="btn_pedidos" class="list-group-item list-group-item-action product-category-button">Pedidos</button>
+          </div>
+          {% endif %}
 
         </div>
         <div class="two">
           {% if template == "cliente" %}
-          <h1>Hola Cliente</h1>
+          <h2>Hola Cliente</h2>
           {% if lista_pedidos %}
           <h4 class="pedidostext">Pedidos del {{template}}</h4>
           {% for pedido in lista_pedidos %}
@@ -59,12 +72,13 @@
                     <p class="card-text">{{producto.idProducto.nombre}} de <strong>{{producto.idProducto.idVendedor.username}}</strong></p>
                     <p class="textcantidad">
                       Cantidad: {{producto.cantidad}} x
-                      ${{producto.idProducto.precio}}
+                      ${{producto.idProducto.precio|floatformat:2}}
                     </p>
                   </div>
                   <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
                   {% endfor %}
-                  <h5>Total: {{pedido.total}}</h5>
+                  <p>Fecha: {{pedido.idPedido.fecha}}</p>
+                  <h5>Total: ${{pedido.total|floatformat:2}}</h5>
                   <h5>
                     Dirección:
                     {{pedido.idPedido.idCliente.idDireccion.nombreCompleto}}
@@ -83,7 +97,7 @@
           {% endfor %} {% else %}
           <h2>{{error}}</h2>
           {% endif %} {% else %}
-          <h1>Hola vendedor</h1>
+          <h2>Hola vendedor</h2>
           {% if lista_pedidos_vendedor %}
           <h4 class="pedidostext">Pedidos del {{template}}</h4>
           {% for pedido in lista_pedidos_vendedor %}
@@ -107,12 +121,13 @@
                     <p class="card-text">{{producto.idProducto.nombre}}</p>
                     <p class="textcantidad">
                       Cantidad: {{producto.cantidad}} x
-                      ${{producto.idProducto.precio}}
+                      ${{producto.idProducto.precio|floatformat:2}}
                     </p>
                   </div>
                   <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
                   {% endfor %}
-                  <h5>Total: {{pedido.total}}</h5>
+                  <p>Fecha: {{pedido.idPedido.fecha}}</p>
+                  <h5>Total: ${{pedido.total|floatformat:2}}</h5>
                   <h5>
                     Dirección:
                     {{pedido.idPedido.idCliente.idDireccion.nombreCompleto}}
