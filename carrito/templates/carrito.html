@@ -26,7 +26,7 @@
                       <div class="card-container">
                         
                         <div class="details-container" id="details-container">
-                            <div class="button-container"><a class="btn btn-primary ethnic-btn" href="javascript:history.back()" role="button">Regresar</a><div class="header-container"><h1>Carrito</h1></div> </div>
+                            <div class="button-container"><a class="btn btn-primary ethnic-btn" href="javascript:history.back()" role="button">Regresar</a>{% if cart_products %}<div class="header-container"><h1>Carrito</h1></div> {% endif %} </div>
                            
                             {% if cart_products %}
                             <div id="cart">

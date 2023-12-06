@@ -19,12 +19,11 @@ def cart(request):
         try:
             cart_products = CarritoDetalle.objects.filter(idCarrito=carrito.id)
         except:
-            #NO HAY PRODUCTOS EN CARRITO
-            return 
+            return render(request,"carrito.html",{})
     except Carrito.DoesNotExist:
         nuevoCarrito = Carrito.objects.create(idCliente=request.user)
         nuevoCarrito.save()
-        return 
+        return render(request,"carrito.html",{})
     
     return render(request,"carrito.html",{
         'cart_products': cart_products
